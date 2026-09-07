@@ -1,108 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Project</title>
-    <style>
-        /* Basic Styling */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        /* Navigation Bar */
-        nav {
-            background-color: #24292e;
-            padding: 10px 20px;
-            display: flex;
-            gap: 15px;
-        }
-        nav button {
-            background: none;
-            border: none;
-            color: #c8d1d9;
-            font-size: 16px;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-        nav button:hover, nav button.active {
-            color: #fff;
-            background-color: #31363c;
-            font-weight: bold;
-        }
-        /* Tab Content Views */
-        .tab-content {
-            display: none; /* Hides tabs by default */
-            padding: 30px;
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .tab-content.active {
-            display: block; /* Shows the active tab */
-        }
-        code {
-            background: #f1f1f1;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Machine Learning Project - ABS Data Analysis - CU Boulder CSCI 5612">
+  <meta name="authors" content="Will Creager">
+  <title>Introduction | ABS Data Analysis</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- Navigation Menu -->
-    <nav>
-        <button class="nav-btn active" onclick="openTab('introduction')">Introduction</button>
-        <button class="nav-btn" onclick="openTab('dataprep-eda')">DataPrep_EDA</button>
-    </nav>
-
-    <!-- Introduction Tab Content -->
-    <div id="introduction" class="tab-content active">
-        <h1>Project Introduction</h1>
-        <p>Welcome to my data science portfolio website hosted on GitHub Pages.</p>
-        <p>This project explores real-world data to solve complex problems. Use the navigation bar above to explore the data preparation steps and Exploratory Data Analysis (EDA).</p>
-    </div>
-
-    <!-- DataPrep_EDA Tab Content -->
-    <div id="dataprep-eda" class="tab-content">
-        <h1>Data Preparation & Exploratory Data Analysis (EDA)</h1>
-        <p>In this section, you'll find the workflows used to clean the raw data and uncover initial insights.</p>
-        <h3>Key Steps Taken:</h3>
-        <ul>
-            <li>Handled missing values using median imputation.</li>
-            <li>Removed outliers using the Interquartile Range (IQR) method.</li>
-            <li>Visualized feature distributions using histograms and box plots.</li>
+  
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <div>
+          <div class="logo-text">ABS Data Analysis</div>
+          <div class="logo-subtext">CSCI 5612 &bull; Machine Learning &bull; Fall 2026</div>
+        </div>
+      </div>
+      
+      <nav class="nav">
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Introduction</a></li>
+          <li><a href="eda.html" class="nav-link">Data Prep &amp; EDA</a></li>
         </ul>
+      </nav>
     </div>
-
-    <!-- JavaScript to Control Tabs -->
-    <script>
-        function openTab(tabId) {
-            // Hide all tab content
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // Show current tab content
-            document.getElementById(tabId).classList.add('active');
-
-            // Add active class to clicked button
-            event.currentTarget.classList.add('active');
-        }
-    </script>
-
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>ABS Data Analysis</h1>
+      <p class="hero-subtitle"></p>
+      <p></p>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <main>
+    
+    <!-- Research Topic & Significance -->
+    <section class="section">
+      <div class="container">
+        <h2>Research Topic & Significance</h2>
+        
+      </div>
+    </section>
+    
+    <!-- Stakeholders -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Stakeholders</h2>
+        
+      </div>
+    </section>
+    
+    <!-- Research Questions -->
+    <section class="section">
+      <div class="container">
+        <h2>Research Questions</h2>
+        
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-text">
+        &copy; 2026 Will Creager
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Introduction</a>
+        <a href="eda.html">Data Prep &amp; EDA</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js"></script>
 </body>
 </html>
