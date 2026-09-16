@@ -56,6 +56,73 @@
 
   <!-- Main Content -->
   <main>
+    
+    <!-- Section 1: Data Gathering Methodology -->
+    <section class="section section">
+      <div class="container">
+        <h2>Data Gathering Methodology</h2>
+
+        <div class="content-block">
+          <p>
+            To establish a robust analytical framework for this research topic, a multi-tiered data ingestion pipeline was constructed using Python to interface directly with official, publicly available data provided by Major League Baseball (MLB) through their public API. This granular information is crucial for researching behavioral trends, game progression tracking, and performance distributions, as it eliminates manual gathering bias and ensures precise records.
+          </p>
+
+          <p>
+            The ingestion workflow leverages an established Python wrapper library, MLB-StatsAPI, which acts as an interface layer to efficiently query the underlying REST endpoints. Once retrieved, the raw JSON payload streams are programmatically mapped into tabular structures, optimized for relational database insertion, and permanently stored within a structured local Microsoft SQL Server environment for downstream modeling tasks.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: API Reference and Endpoints -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>API Reference and Endpoints</h2>
+
+        <div class="content-block">
+          <p>
+            The execution of the data pipeline relies on the official MLB StatsAPI framework. Data gathering targets specific configurations across four distinct core API endpoints to compile lookup tables and comprehensive play-by-play data:
+          </p>
+        </div>
+
+        <!-- API Endpoints Table -->
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Endpoint Name</th>
+                <th>Parameters</th>
+                <th>Data Grabbed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>sports_players</strong></td>
+                <td>"sportId": 1, "season": 2026</td>
+                <td>Fetches lookup table for every player who played in the MLB in 2026</td>
+              </tr>
+              <tr>
+                <td><strong>teams</strong></td>
+                <td>"sportId": 1, "season": 2026</td>
+                <td>Fetches lookup table for all 30 MLB teams</td>
+              </tr>
+              <tr>
+                <td><strong>schedule</strong></td>
+                <td>"sportId": 1, "season": 2026, "gameTypes": "R"</td>
+                <td>Fetches complete schedule for the 2026 MLB regular season. Also contains flag indicating once a game is final and its play-by-play data is ready</td>
+              </tr>
+              <tr>
+                <td><strong>game</strong></td>
+                <td>"gamePk": 824513 (unique by game, grabbed from schedule lookup)</td>
+                <td>Fetches the complete play-by-play data for a specific, completed game</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
 
 
   </main>
