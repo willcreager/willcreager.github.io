@@ -124,9 +124,7 @@
 
           <h3>Data Ingestion Code</h3>
           <p>
-              The complete, end-to-end programmatic data pipeline developed to interface with the 
-              official Major League Baseball API endpoints is fully documented and maintained in the 
-              project's open-source version control repository. 
+              The complete, end-to-end programmatic data pipeline developed to interface with the official Major League Baseball API endpoints is fully documented and maintained in the project's open-source version control repository. 
           </p>
           <p>
               <strong>Source Code Link:</strong> 
@@ -199,7 +197,7 @@
         <article class="table-profile">
             <h3>1. Schedule Table (<code>schedule</code>)</h3>
             <p>
-                The <code>schedule</code> table acts as the chronological anchor for the entire dataset. It logs unique game identifiers, calendar dates, competition levels, and the corresponding home and away team entities.
+                The <code>schedule</code> table acts as the chronological anchor for the entire dataset. It logs unique game identifiers, calendar dates, competition levels, and the corresponding home and away team entities. It also marks which games are complete and are ready to have their play-by-play data ingested.
             </p>
             <figure>
                 <a href="images/sqlscreenshots/schedule.png" target="_blank">
@@ -231,7 +229,7 @@
         <article class="table-profile" style="margin-top: 40px;">
             <h3>3. Players Table (<code>players</code>)</h3>
             <p>
-                The <code>players</code> table functions as the master athlete index. It maintains unique player biometric associations, defensive positional designations, and names, serving as a relational lookup for active game rosters.
+                The <code>players</code> table functions as the master athlete index. It maintains unique player biometric associations, birth dates, and names, serving as a relational lookup for player id columns in the pitch by pitch table.
             </p>
             <figure>
                 <a href="images/sqlscreenshots/players.png" target="_blank">
@@ -247,7 +245,7 @@
         <article class="table-profile" style="margin-top: 40px;">
             <h3>4. Pitch-by-Pitch Table (<code>pitch_by_pitch</code>)</h3>
             <p>
-                The continuous <code>pitch_by_pitch</code> transactional table serves as the primary data matrix for analytics. Due to the high dimensionality and extensive feature count tracking spatial coordinate parameters, the schema layout is viewed below across three continuous segmented matrices.
+                The continuous <code>pitch_by_pitch</code> transactional table serves as the primary data matrix for analytics. Due to the high dimensionality and extensive feature count tracking spatial coordinate parameters, the schema layout is viewed below across three segmented screenshots.
             </p>
             
             <!-- Segment 1 -->
