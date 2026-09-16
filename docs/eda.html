@@ -68,7 +68,7 @@
           </p>
 
           <p>
-            The ingestion workflow leverages an established Python wrapper library, <a href="https://pypi.org/project/MLB-StatsAPI/">MLB-StatsAPI</a>, which acts as an interface layer to efficiently query the underlying REST endpoints. Once retrieved, the raw JSON payload streams are programmatically mapped into tabular structures, optimized for relational database insertion, and permanently stored within a structured local Microsoft SQL Server environment for downstream modeling tasks.
+            The ingestion workflow leverages an established Python wrapper library, <a href="https://pypi.org/project/MLB-StatsAPI/" target="_blank">MLB-StatsAPI</a>, which acts as an interface layer to efficiently query the underlying REST endpoints. Once retrieved, the raw JSON payload streams are programmatically mapped into tabular structures, optimized for relational database insertion, and permanently stored within a structured local Microsoft SQL Server environment for downstream modeling tasks.
           </p>
         </div>
 
@@ -119,6 +119,19 @@
               </tr>
             </tbody>
           </table>
+
+          <h3>Data Ingestion Code</h3>
+          <p>
+              The complete, end-to-end programmatic data pipeline developed to interface with the 
+              official Major League Baseball API endpoints is fully documented and maintained in the 
+              project's open-source version control repository. 
+          </p>
+          <p>
+              <strong>Source Code Link:</strong> 
+              <a href="https://github.com/willcreager/willcreager.github.io/blob/main/docs/notebooks/DataMining_MLBAPIImport.ipynb" target="_blank" rel="noopener noreferrer">
+                  DataMining_MLBAPIImport.ipynb on GitHub
+              </a>
+          </p>
         </div>
 
       </div>
