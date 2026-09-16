@@ -124,6 +124,51 @@
       </div>
     </section>
 
+    <!-- Section 3: Data Cleaning and Database Management Pipeline -->
+    <section class="section section">
+      <div class="container">
+        <h2>Data Cleaning and Database Management Pipeline</h2>
+
+        <div class="content-block">
+          <p>
+            Raw information obtained directly through an API rarely conforms to strict database schemas without deliberate refinement. A comprehensive programmatic data normalization routine was implemented to guarantee structural completeness and data integrity across all downstream datasets:
+          </p>
+        </div>
+
+        <!-- Data Quality Callouts -->
+        <div class="callout-grid">
+          <div class="callout-card">
+            <h4>Flattener Mechanics for Hierarchical Objects</h4>
+            <p>
+              API results natively bundle multiple metadata entities into deep JSON object trees. To eliminate nesting complexity, isolated custom mapping functions safely traverse dictionary elements, exposing underlying categorical properties like handedness variables (batSide, pitchHand) for players and target grouping classifications, like leagueId and divisionId for teams, into clean database fields.
+            </p>
+          </div>
+          <div class="callout-card">
+            <h4>Constraint Enforcement and Datatype Alignment</h4>
+            <p>
+              Textual timestamps are parsed and converted explicitly into unified temporal representations (pd.to_datetime), establishing compatibility with target database storage constraints. Additionally, standard floating-point approximations are strictly monitored, and structural tracking values (such as scores, indexes, and rosters) are cast directly into nullable integer forms (Int64) to accommodate standard missing database records without triggering system crashes.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout-grid">
+          <div class="callout-card">
+            <h4>Historical State Reconstruction</h4>
+            <p>
+              Because the live game feeds compile final aggregate summaries, an algorithmically driven state machine tracks events backwards chronologically. By systematically tracing the running delta of play outcomes, the data pipeline calculates and injects pre-event base-running status (runnerOn1st, runnerOn2nd, runnerOn3rd), dynamic evaluation scores (prePlayHomeScore, prePlayAwayScore), and remaining team verification challenge levels before each pitch occurs. The current catcher for each team is also tracked dynamically using the starting lineups and substitution events. 
+            </p>
+          </div>
+          <div class="callout-card">
+            <h4>Database Duplication Safeguards</h4>
+            <p>
+              To maintain clean data integrity during parallel operational execution cycles, an automated key purge protocol clears out pre-existing database indices matching specific parameters <code>(DELETE FROM pitch_by_pitch WHERE gamePk = :game_pk)</code> prior to parsing new additions. This prevents duplicate primary key constraints or broken tracking data arrays.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
 
   </main>
 
