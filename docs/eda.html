@@ -307,13 +307,13 @@
 
         <div class="content-block">
           <p>
-            Because the regular season remained ongoing at the start of the initial EDA process, specific structural boundaries were established to preserve the consistency of the exploratory data analysis pipeline. For reasons of analytical timeliness and processing efficiency, a temporal constraint was applied to isolate a data subset containing records logged exclusively up through the end of August. Furthermore, data cleaning required the identification and systemic removal of four specific games from the operational data matrix. These events were contested at alternative venues lacking the necessary Hawk-Eye optical tracking camera arrays, making spatial vector coordinates and precise pitch tracking variables entirely unavailable.
+            Because the regular season remained ongoing at the start of the initial EDA process, specific structural boundaries were established to preserve the consistency of the exploratory data analysis pipeline. For reasons of analytical timeliness and processing efficiency, a temporal constraint was applied to isolate a data subset containing records logged exclusively up through the end of August. Furthermore, data cleaning required the exclusion of four specific games from the <code>pitch_by_pitch</code> table. These events were contested at alternative venues lacking the necessary Hawk-Eye optical tracking camera arrays, leaving the ABS challenge system unavailable.
           </p>
 
           <!-- Excluded Games Table -->
           <h3 style="margin-top: 30px;">Excluded Games</h3>
           <p>
-              The table below isolates the four specific games excluded from the <code>pitch_by_pitch</code> database table due to hardware constraints at the host facilities.
+              The table below isolates the four specific games explicitly excluded while querying the <code>pitch_by_pitch</code> table due to hardware constraints at the host facilities.
           </p>
           <table class="data-table">
             <thead>
