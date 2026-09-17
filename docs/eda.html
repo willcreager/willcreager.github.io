@@ -300,6 +300,57 @@
         </article>
     </section>
 
+    <!-- Section 5: Data Subsets, Temporal Constraints, and Feature Engineering -->
+    <section class="section section">
+      <div class="container">
+        <h2>Data Subsets, Temporal Constraints, and Feature Engineering</h2>
+
+        <div class="content-block">
+          <p>
+            Because the regular season remained ongoing at the start of the initial EDA process, specific structural boundaries were established to preserve the consistency of the exploratory data analysis pipeline. For reasons of analytical timeliness and processing efficiency, a temporal constraint was applied to isolate a data subset containing records logged exclusively up through the end of August. Furthermore, data cleaning required the identification and systemic removal of four specific games from the operational data matrix. These events were contested at alternative venues lacking the necessary Hawk-Eye optical tracking camera arrays, making spatial vector coordinates and precise pitch tracking variables entirely unavailable.
+          </p>
+
+          <!-- Excluded Games Table -->
+          <h3 style="margin-top: 30px;">Excluded Games</h3>
+          <p>
+              The table below isolates the four specific games excluded from the <code>pitch_by_pitch</code> database table due to hardware constraints at the host facilities.
+          </p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Game PK</th>
+                <th>Game Date</th>
+                <th>Stadium Name (City)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>825093</td>
+                <td>4/25/2026</td>
+                <td>Estadio Alfredo Harp Helú (Mexico City, Mexico)</td>
+              </tr>
+              <tr>
+                <td>825094</td>
+                <td>4/26/2026</td>
+                <td>Estadio Alfredo Harp Helú (Mexico City, Mexico)</td>
+              </tr>
+              <tr>
+                <td>823669</td>
+                <td>8/13/2026</td>
+                <td>Field of Dreams Ballpark (Dyersville, IA)</td>
+              </tr>
+              <tr>
+                <td>823745</td>
+                <td>8/23/2026</td>
+                <td>Bowman Field (Flushing, NY)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
 
   </main>
 
