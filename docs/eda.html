@@ -346,6 +346,50 @@
               </tr>
             </tbody>
           </table>
+
+          <!-- SQL Subset 1: Pitch by Pitch Subsets -->
+          <article class="sql-pipeline-segment" style="margin-top: 40px; padding: 25px; border: 1px solid #ddd; border-radius: 4px; background-color: #ffffff;">
+              <h3>Pipeline Extraction: Baseline Data Subsets (<code>pitch_by_pitch_Subsets.sql</code>)</h3>
+              <p>
+                  The query script <code>pitch_by_pitch_Subsets.sql</code> isolates and partitions transactional records into two distinct analytical matrices. By filtering pitch events through tailored conditional parameters, this program segments player tracking fields based on specific positional roles. This approach prevents data leakage and ensures clean dimensions for downstream machine learning tasks. It also eliminates any records where a challenge was not possible, leaving just the relevant data.
+              </p>
+      
+              <!-- Links to Code and CSV Artifacts -->
+              <div class="artifact-links" style="margin: 20px 0; padding: 15px; background-color: #f1f8ff; border-left: 4px solid #0366d6; font-family: sans-serif;">
+                  <h4 style="margin-top: 0; margin-bottom: 10px;">Pipeline Source Code & Produced Datasets</h4>
+                  <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                      <li>
+                          <strong>SQL Source Code:</strong> 
+                          <a href="docs/code/sqlqueries/pitch_by_pitch_Subsets.sql" target="_blank" rel="noopener noreferrer">
+                              pitch_by_pitch_Subsets.sql
+                          </a>
+                      </li>
+                      <li>
+                          <strong>Batting Subset Matrix:</strong> 
+                          <a href="docs/data/csvs/MLBData-ABSChallengeablePitches-Batters.csv" target="_blank" rel="noopener noreferrer">
+                              MLBData-ABSChallengeablePitches-Batters.csv
+                          </a>
+                      </li>
+                      <li>
+                          <strong>Defensive & Catcher Subset Matrix:</strong> 
+                          <a href="docs/data/csvs/MLBData-ABSChallengeablePitches-Defense.csv" target="_blank" rel="noopener noreferrer">
+                              MLBData-ABSChallengeablePitches-Defense.csv
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+      
+              <!-- Breakdown of the Two Extracted Subsets -->
+              <h4 style="margin-top: 25px;">Extracted Subsets Overview</h4>
+              <ul style="line-height: 1.6; padding-left: 20px;">
+                  <li style="margin-bottom: 15px;">
+                      <strong>Batter Subset:</strong> This dataset isolates game situations where the batter could challenge (pitch was called a strike and his team has at least one challenge remaining). Features are grouped to capture strike zone discipline metrics, individual challenge success frequencies, and response vectors relative to umpire call inconsistencies. It provides the structured feature space required to build predictive models regarding a batter's likelihood to challenge in specific conditions.
+                  </li>
+                  <li style="margin-bottom: 15px;">
+                      <strong>Defense Subset:</strong> This dataset isolates game situations where the pitcher or catcher could challenge (pitch was called a ball and their team has at least one challenge remaining). It maps metrics such as pitch framing, setup positions, catcher challenge rates, and umpire interaction tendencies. This structural split ensures that catcher-specific spatial biases are analyzed separately from offensive player performance profiles.
+                  </li>
+              </ul>
+          </article>
         </div>
 
       </div>
