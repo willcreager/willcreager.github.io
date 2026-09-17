@@ -390,6 +390,59 @@
                   </li>
               </ul>
           </article>
+
+          <!-- SQL Feature Engineering: Situational Splits -->
+          <article class="sql-pipeline-segment" style="margin-top: 40px; padding: 25px; border: 1px solid #ddd; border-radius: 4px; background-color: #ffffff;">
+              <h3>Feature Engineering: Advanced Situational Splits (<code>GetBatterABSChallengeSplits_Final.sql</code> &amp; <code>GetCatcherABSChallengeSplits_Final.sql</code>)</h3>
+              <p>
+                  To extract deeper context from the core pitch records, localized feature engineering scripts were deployed to compute aggregated performance baselines across varying situational and operational splits. These scripts transform raw transactional interactions into specialized feature spaces that focus heavily on contextual pressure points, pitch types, and game states.
+              </p>
+      
+              <!-- Links to Code and CSV Artifacts -->
+              <div class="artifact-links" style="margin: 20px 0; padding: 15px; background-color: #f1f8ff; border-left: 4px solid #0366d6; font-family: sans-serif;">
+                  <h4 style="margin-top: 0; margin-bottom: 10px;">Situational Query Scripts &amp; Engineered Datasets</h4>
+                  <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                      <li>
+                          <strong>Batter Aggregate Query:</strong> 
+                          <a href="code/sqlqueries/GetBatterABSChallengeSplits_Final.sql" target="_blank" rel="noopener noreferrer">
+                              GetBatterABSChallengeSplits_Final.sql
+                          </a>
+                      </li>
+                      <li>
+                          <strong>Catcher Aggregate Query:</strong> 
+                          <a href="code/sqlqueries/GetCatcherABSChallengeSplits_Final.sql" target="_blank" rel="noopener noreferrer">
+                              GetCatcherABSChallengeSplits_Final.sql
+                          </a>
+                      </li>
+                      <li>
+                          <strong>Engineered Batter Situational Splits:</strong> 
+                          <a href="data/csvs/MLBData-ABSSituationalSplits-Batters.csv" target="_blank" rel="noopener noreferrer">
+                              MLBData-ABSSituationalSplits-Batters.csv
+                          </a>
+                      </li>
+                      <li>
+                          <strong>Engineered Catcher Situational Splits:</strong> 
+                          <a href="data/csvs/MLBData-ABSSituationalSplits-Catchers.csv" target="_blank" rel="noopener noreferrer">
+                              MLBData-ABSSituationalSplits-Catchers.csv
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+      
+              <!-- Breakdown of Aggregations by Type -->
+              <h4 style="margin-top: 25px;">Dimensions of Engineered Aggregations</h4>
+              <ul style="line-height: 1.6; padding-left: 20px;">
+                  <li style="margin-bottom: 15px;">
+                      <strong>Home vs. Away Environmental Splits:</strong> The data vectors are segregated into home and away profiles to investigate systemic environmental biases, such as localized fan influence, host venue optical calibration variances, and distinct visiting team behavioral patterns under adversarial conditions.
+                  </li>
+                  <li style="margin-bottom: 15px;">
+                      <strong>Inning Groupings &amp; Resource Availability Constraints:</strong> Observations are aggregated by game phase (early, middle, and late leverage innings) and mapped directly against the volume of strategic challenges remaining in the dugout. This feature captures tactical risk-reward shifts, showing how challenge success and aggression thresholds alter when resource limitations become acute.
+                  </li>
+                  <li style="margin-bottom: 15px;">
+                      <strong>Pitch Type Structural Groupings:</strong> Pitch tracking records are partitioned into specific movement classifications (e.g., fastballs, breaking ball variations, off-speed deliveries). This dimensionality lets downstream models isolate spatial zone boundary discrepancies based on ball rotation, velocity vectors, and sudden breaks that typically complicate real-time human arbitration.
+                  </li>
+              </ul>
+          </article>
         </div>
 
       </div>
