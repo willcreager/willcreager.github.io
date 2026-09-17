@@ -288,13 +288,13 @@
             
             <ul style="line-height: 1.6; padding-left: 20px;">
                 <li style="margin-bottom: 12px;">
-                    <strong>Athlete Integrity Mapping:</strong> The primary key identifier <code>id</code> within the <code>players</code> table serves as a relational anchor for multiple tracking parameters in the main transactional table. Specifically, it maps directly to <code>batterId</code>, <code>pitcherId</code>, and <code>catcherId</code> inside the <code>pitch_by_pitch</code> table, allowing downstream classification tasks to isolate performance profiles by specific player roles.
+                    <strong>Athlete Mapping:</strong> The primary key identifier <code>id</code> within the <code>players</code> table serves as a relational anchor for multiple tracking parameters in the main transactional table. Specifically, it maps directly to <code>batterId</code>, <code>pitcherId</code>, and <code>catcherId</code> inside the <code>pitch_by_pitch</code> table, allowing downstream classification tasks to isolate performance profiles by specific player roles.
                 </li>
                 <li style="margin-bottom: 12px;">
-                    <strong>Chronological & Event Mapping:</strong> The primary key <code>gamePk</code> in the <code>schedule</code> table creates a strict one-to-many relationship with the corresponding <code>gamePk</code> column in the <code>pitch_by_pitch</code> dataset. This ensures that every tracked pitch event maps to a single verified game, tracking dynamic state metrics across a temporal progression.
+                    <strong>Game Mapping:</strong> The primary key <code>gamePk</code> in the <code>schedule</code> table creates a strict one-to-many relationship with the corresponding <code>gamePk</code> column in the <code>pitch_by_pitch</code> dataset. This ensures that every tracked pitch event maps to a single verified game, tracking dynamic state metrics across a temporal progression.
                 </li>
                 <li style="margin-bottom: 12px;">
-                    <strong>Franchise & Team Mapping:</strong> The unique entity key <code>id</code> within the <code>teams</code> master index maps outward to multiple operational contexts. It resolves home and away match-up contexts by linking to both the <code>homeTeamId</code> and <code>awayTeamId</code> parameters within the <code>schedule</code> and <code>pitch_by_pitch</code> matrices.
+                    <strong>Team Mapping:</strong> The unique entity key <code>id</code> within the <code>teams</code> master index maps outward to multiple operational contexts. It resolves home and away match-up contexts by linking to both the <code>homeTeamId</code> and <code>awayTeamId</code> parameters within the <code>schedule</code> and <code>pitch_by_pitch</code> matrices.
                 </li>
             </ul>
         </article>
