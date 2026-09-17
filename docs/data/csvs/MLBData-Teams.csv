@@ -1,0 +1,31 @@
+id,name,teamCode,locationName,teamName,leagueId,divisionId
+133,Athletics,ath,Sacramento,Athletics,103,200
+134,Pittsburgh Pirates,pit,Pittsburgh,Pirates,104,205
+135,San Diego Padres,sdn,San Diego,Padres,104,203
+136,Seattle Mariners,sea,Seattle,Mariners,103,200
+137,San Francisco Giants,sfn,San Francisco,Giants,104,203
+138,St. Louis Cardinals,sln,St. Louis,Cardinals,104,205
+139,Tampa Bay Rays,tba,St. Petersburg,Rays,103,201
+140,Texas Rangers,tex,Arlington,Rangers,103,200
+141,Toronto Blue Jays,tor,Toronto,Blue Jays,103,201
+142,Minnesota Twins,min,Minneapolis,Twins,103,202
+143,Philadelphia Phillies,phi,Philadelphia,Phillies,104,204
+144,Atlanta Braves,atl,Atlanta,Braves,104,204
+145,Chicago White Sox,cha,Chicago,White Sox,103,202
+146,Miami Marlins,mia,Miami,Marlins,104,204
+147,New York Yankees,nya,Bronx,Yankees,103,201
+158,Milwaukee Brewers,mil,Milwaukee,Brewers,104,205
+108,Los Angeles Angels,ana,Anaheim,Angels,103,200
+109,Arizona Diamondbacks,ari,Phoenix,D-backs,104,203
+110,Baltimore Orioles,bal,Baltimore,Orioles,103,201
+111,Boston Red Sox,bos,Boston,Red Sox,103,201
+112,Chicago Cubs,chn,Chicago,Cubs,104,205
+113,Cincinnati Reds,cin,Cincinnati,Reds,104,205
+114,Cleveland Guardians,cle,Cleveland,Guardians,103,202
+115,Colorado Rockies,col,Denver,Rockies,104,203
+116,Detroit Tigers,det,Detroit,Tigers,103,202
+117,Houston Astros,hou,Houston,Astros,103,200
+118,Kansas City Royals,kca,Kansas City,Royals,103,202
+119,Los Angeles Dodgers,lan,Los Angeles,Dodgers,104,203
+120,Washington Nationals,was,Washington,Nationals,104,204
+121,New York Mets,nyn,Flushing,Mets,104,204
