@@ -1751,3 +1751,167 @@ p {
     padding: 1rem 0;
   }
 }
+
+/* --- Base Navigation Styles --- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link, .dropdown-btn {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link:hover, 
+.nav-link.active,
+.dropdown-btn:hover {
+  color: #2b6cb0;
+  background-color: #ebf8ff;
+}
+
+/* --- Dropdown Specific Styles (Desktop) --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  list-style: none;
+  margin: 0;
+  z-index: 100;
+}
+
+/* Show class toggled via JavaScript */
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu .nav-link {
+  border-radius: 0;
+  padding: 0.7rem 1.2rem;
+}
+
+/* CSS Indicator Arrow */
+.arrow {
+  border: solid currentcolor;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.dropdown-btn[aria-expanded="true"] .arrow {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+/* --- Mobile Menu Button Toggle --- */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.mobile-menu-btn span {
+  width: 100%;
+  height: 3px;
+  background-color: #2d3748;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* --- Responsive Layout (Mobile Breakpoint) --- */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    gap: 1rem;
+    align-items: flex-start;
+    z-index: 9;
+  }
+
+  .nav-list.is-open {
+    display: flex;
+  }
+  
+  .nav-link, .dropdown-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Structural adjustment for mobile dropdown list styling */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background-color: #f7fafc;
+    width: 100%;
+    padding: 0;
+    margin-top: 0.5rem;
+    border-left: 3px solid #cbd5e0;
+  }
+  
+  .dropdown-menu .nav-link {
+    padding-left: 2rem;
+  }
+}
+
