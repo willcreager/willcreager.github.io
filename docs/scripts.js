@@ -224,3 +224,15 @@ if (dropdownBtn && dropdownMenu) {
   });
 }
 
+/* Ensure your layout defines visibility rules for the .active state */
+.dropdown-menu {
+  display: none; 
+  position: absolute;
+  /* Your existing dropdown positioning styles */
+}
+
+/* Add or merge this rule so the active state forces display rules */
+.dropdown-menu.active {
+  display: block !important;
+}
+
