@@ -495,6 +495,98 @@
       </div>
     </section>
 
+    <!-- Section 6: Exploratory Data Analysis -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Exploratory Data Analysis</h2>
+
+        <div class="content-block">
+          <p>
+            The following ten visualization segments provide an empirical, structural exploration of the Automated Ball-Strike (ABS) challenge tracking matrices. These figures dissect base distributions, spatial umpire accuracy discrepancies, and situational behavioral variances across both batter and defensive data subsets.
+          </p>
+        </div>
+
+        <!-- EDA FIGURE 1 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 1: Batter Challenge Rates and Distribution Analytics</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot1BatterRates_Boxplots.png" alt="Figure 5: Batter Challenge Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This figure illustrates the box plot distributions of challenge behaviors among offensive batters across the tracked dataset rows. The distribution profile highlights a tightly clustered interquartile range for baseline challenge rates, though notable outlier positions emerge representing highly aggressive individual batters.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 2 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 2: Catcher/Defensive Subset Challenge Rate Distributions</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot2CatcherRates_Boxplots.png" alt="Figure 6: Catcher Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This figure presents the descriptive box plot metrics for defensive catcher challenge behaviors. A direct comparison with offensive baselines reveals a structurally different median density profile, suggesting that defensive units execute challenge parameters under differing risk-reward thresholds than their offensive counterparts.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 3 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 3: Temporal Challenge Volume and Success Rate Trends</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot3_TimeSeries.png" alt="Figure 7: Time Series Analysis" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This time series visualization tracks the longitudinal volume and corresponding overturn percentages across the regular season timeline. The moving trend vectors reveal explicit seasonal fluctuations, indicating structural shifts in system adaptation as players and coaching staffs accumulated behavioral experience over consecutive months.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 4 (PAIRED IMAGES) -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 4: Spatial Heatmap Analysis of Strike Zone Margins (Batters and Defense)</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot4.1Batters_SpatialAnalysisHeatMap.png" alt="Figure 4.1: Batter Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot4.2Def_SpatialAnalysisHeatMap.png" alt="Figure 4.2: Defense Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> These paired spatial coordinate heatmaps map the precise physical locations of challenged pitches relative to the standard horizontal and vertical home plate boundaries. High-density color clusters indicate that batter challenges predominantly isolate missed strikes on lower margins, whereas defensive tracking concentrates heavily on framing discrepancies along horizontal edges.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 5 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 5: Inter-Team Challenge Discrepancies and Behavioral Scaling</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot5_TeamScatterPlots.png" alt="Figure 5: Team Scatter Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This multi-variable scatter plot maps team-specific performance matrices to evaluate macro organizational efficiencies within the ABS framework. The distinct structural clustering patterns indicate that certain organizations maintain highly optimized video review pipelines, achieving significantly elevated success rates despite lower overall challenge volumes.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 6 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 6: Individual Home Plate Umpire Accuracy and Variance Boxplots</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot6Umpire_BoxPlots.png" alt="Figure 6: Umpire Box Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This comprehensive box plot profile charts the distribution of challenge overturn rates across individual categorical profiles of home plate officials. The wide variance spans across differing quartiles, providing explicit evidence of non-uniform human strike zone application and proving the systemic necessity for analytical correction models.
+            </p>
+        </div>
+    
+        <!-- EDA FIGURE 7 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 7: Catcher Offensive vs. Defensive Strategic Matrix Comparisons</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot7CatcherOffVsDef_Scatters.png" alt="Figure 7: Catcher Offensive vs Defensive Scatters" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This scatter chart evaluates the correlation between a catcher's individual offensive challenge accuracy versus their defensive framing tracking efficiency. The absence of a strong directional linear association implies that offensive visual acuity parameters do not necessarily transfer into defensive pitch-framing awareness profiles.
+            </p>
+        </div>
+
+      </div>
+    </section>
+
 
   </main>
 
