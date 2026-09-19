@@ -202,3 +202,35 @@ function formatDate(date) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(date).toLocaleDateString('en-US', options);
 }
+
+  // ---------- Dropdown Menu Toggle ----------
+  const dropdownToggle = document.querySelector('.nav-item.dropdown > a, .nav-link.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+
+  if (dropdownToggle && dropdownMenu) {
+    dropdownToggle.addEventListener('click', function(e) {
+      // Prevent navigating to a link if the dropdown is acting as a toggle
+      e.preventDefault();
+      e.stopPropagation();
+      
+      dropdownMenu.classList.toggle('active');
+      this.setAttribute('aria-expanded', dropdownMenu.classList.contains('active'));
+    });
+
+    // Close dropdown when clicking anywhere else on the page
+    document.addEventListener('click', function(e) {
+      if (!dropdownMenu.contains(e.target) && !dropdownToggle.contains(e.target)) {
+        dropdownMenu.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Optional: Close dropdown when pressing the Escape key for accessibility
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dropdownMenu.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
