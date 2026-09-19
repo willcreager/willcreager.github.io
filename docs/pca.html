@@ -32,13 +32,21 @@
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link ">Introduction</a></li>
           <li><a href="eda.html" class="nav-link">Data Prep &amp; EDA</a></li>
-          <li><a href="clustering.html" class="nav-link">Clustering</a></li>
-          <li><a href="pca.html" class="nav-link active">PCA</a></li>
-          <li><a href="naivebayes.html" class="nav-link">Naive Bayes</a></li>
-          <li><a href="dectrees.html" class="nav-link">Decision Trees</a></li>
-          <li><a href="svms.html" class="nav-link">SVMs</a></li>
-          <li><a href="regression.html" class="nav-link">Regression</a></li>
-          <li><a href="nn.html" class="nav-link">NN</a></li>
+          <!-- Models Dropdown Parent -->
+          <li class="dropdown">
+            <button class="dropdown-btn" aria-haspopup="true" aria-expanded="false">
+              Models <span class="arrow"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="clustering.html" class="nav-link">Clustering</a></li>
+              <li><a href="pca.html" class="nav-link active">PCA</a></li>
+              <li><a href="naivebayes.html" class="nav-link">Naive Bayes</a></li>
+              <li><a href="dectrees.html" class="nav-link">Decision Trees</a></li>
+              <li><a href="svms.html" class="nav-link">SVMs</a></li>
+              <li><a href="regression.html" class="nav-link">Regression</a></li>
+              <li><a href="nn.html" class="nav-link">NN</a></li>
+            </ul>
+          </li>
           <li><a href="conclusions.html" class="nav-link">Conclusions</a></li>
         </ul>
       </nav>
@@ -81,6 +89,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
