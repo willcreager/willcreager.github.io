@@ -584,6 +584,41 @@
             </p>
         </div>
 
+        <!-- EDA FIGURE 8 (PAIRED IMAGES) -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 8: Challenge Breakdown by Pitch Classification Types</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot8.1PitchTypeBreakdownBatters_StackedBar.png" alt="Figure 8.1: Batter Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot8.2PitchTypeBreakdownCatchers_StackedBar.png" alt="Figure 8.2: Catcher Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> These segmented stacked bar charts break down overall challenge outcomes relative to engineered ball flight properties (Fastballs, Breaking Balls, and Off-speed pitches). These plots tell constrasting stories for batters and catchers. Batters tend to struggle challenging fastballs compared to the other pitch types, while catchers show no real difference between the three.
+            </p>
+        </div>
+
+        <!-- EDA FIGURE 9 (PAIRED IMAGES) -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 9: Challenge Rate vs Overturn Rate, Batters and Catchers</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot9.1Batters_RegPlot.png" alt="Figure 9.1: Batter Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot9.1Catcher_RegPlot.png" alt="Figure 9.2: Defense Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> These regression plots comparing the challenge and overturn rates for batters and catchers both have a slight positive slope, indicating that players who challenge more often are also more likely to have a higher overturn rate, although the relationships are weak. Comparing the values within these plots also reveals two key insights: catchers tend to challenge at a much lower rate than batters do, but also tend to have a significantly higher overturn rate.
+            </p>
+        </div>
+
+        <!-- EDA FIGURE 10 -->
+        <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
+            <h3 style="margin-top: 0; color: #222;">EDA Visualization 10: Catcher Workload Impact on Challenge Rate Regression Plot</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="images/edavisualizations/Plot10CatcherWorkloadVsChallengeRate_RegPlot.png" alt="Figure 10: Catcher Workload Impact" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            </div>
+            <p>
+                <strong>Analysis Summary:</strong> This final regression plot shows the relationship between the number of opportunities a catcher has had to challenge a pitch and their challenge rate. The very slight upward slope of the trendline indicates there's no real linear relationship between these two variables. The spread of the challenge rates appears to decrease as the opportunities increases. 
+            </p>
+        </div>
+
       </div>
     </section>
 
