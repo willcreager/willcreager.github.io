@@ -288,7 +288,7 @@
                     <img src="images/sqlscreenshots/pitch_by_pitch3.png" alt="Pitch by Pitch Table Part 3 Snapshot" style="max-width:100%; height:auto; border:1px solid #ccc;">
                 </a>
                 <figcaption style="margin-top: 8px; font-style: italic; color: #555;">
-                    Figure 4.3: Final dimensional segment displaying advanced spatial spatial metrics and tracking system outputs. The fields map coordinate locations, ball flight vectors, and velocity readings.
+                    Figure 4.3: Final dimensional segment displaying advanced spatial metrics and tracking system outputs. The fields map coordinate locations, ball flight vectors, and velocity readings.
                 </figcaption>
             </figure>
         </article>
@@ -539,7 +539,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 1: Batter Challenge and Overturn Rates Distributions</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot1BatterRates_Boxplots.png" alt="Figure 5: Batter Challenge Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot1BatterRates_Boxplots.png" alt="EDA Figure 1: Batter Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This figure illustrates the box plot distributions of challenge behaviors among offensive batters across the tracked dataset rows. The distribution profile highlights a tightly clustered interquartile range for baseline challenge rates, though notable outlier positions emerge representing highly aggressive individual batters and batters with few challenges that were either all overturned or all upheld. These outliers were identified as valid values, and will be kept for future modeling.
@@ -550,7 +550,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 2: Catcher Challenge and Overturn Rates Distributions</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot2CatcherRates_Boxplots.png" alt="Figure 6: Catcher Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot2CatcherRates_Boxplots.png" alt="EDA Figure 2: Catcher Rates Boxplots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This figure presents the descriptive box plot metrics for defensive catcher challenge behaviors. A direct comparison with offensive baselines reveals a structurally different median density profile, suggesting that defensive units execute challenge parameters under differing risk-reward thresholds than their offensive counterparts. Similar to batters, the outliers that were flagged in these box plots were identified and cleared as valid.
@@ -561,7 +561,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 3: Temporal Challenge and Overturn Rates Trends</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot3_TimeSeries.png" alt="Figure 7: Time Series Analysis" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot3_TimeSeries.png" alt="EDA Figure 3: Time Series Analysis" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This time series visualization tracks the longitudinal volume and corresponding overturn percentages across the regular season timeline. The moving trend vectors reveal explicit seasonal fluctuations, indicating structural shifts in system adaptation as players and coaching staffs accumulated behavioral experience over consecutive months.
@@ -572,8 +572,8 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 4: Spatial Heatmap Analysis of Strike Zone Margins (Batters and Defense)</h3>
             <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot4.1Batters_SpatialAnalysisHeatMap.png" alt="Figure 4.1: Batter Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
-                <img src="images/edavisualizations/Plot4.2Def_SpatialAnalysisHeatMap.png" alt="Figure 4.2: Defense Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot4.1Batters_SpatialAnalysisHeatMap.png" alt="EDA Figure 4.1: Batter Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot4.2Def_SpatialAnalysisHeatMap.png" alt="EDA Figure 4.2: Defense Spatial Heatmap" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> These paired spatial coordinate heatmaps map the offensive and defensive challenge rates to the pitch's distance from the strike zone boundaries. While the strike zone has a fixed width, its bottom and top are dynamic depending on the batter's height and stance, so two heatmaps were required for each challenge type. As expected, high-density color clusters indicate that batter challenges predominantly isolate missed strikes on lower margins, whereas defensive tracking concentrates heavily on framing discrepancies along horizontal edges.  
@@ -584,7 +584,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 5: Inter-Team Challenge and Overturn Rates Comparisons</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot5_TeamScatterPlots.png" alt="Figure 5: Team Scatter Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot5_TeamScatterPlots.png" alt="EDA Figure 5: Team Scatter Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This multi-variable scatter plot maps team-specific performance matrices to evaluate macro organizational efficiencies within the ABS framework. The distinct structural clustering patterns indicate that certain organizations maintain highly optimized video review pipelines, achieving significantly elevated success rates despite lower overall challenge volumes.
@@ -595,7 +595,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 6: Individual Home Plate Umpire Accuracy and Variance Boxplots</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot6Umpire_BoxPlots.png" alt="Figure 6: Umpire Box Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot6Umpire_BoxPlots.png" alt="EDA Figure 6: Umpire Box Plots" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This comprehensive box plot profile charts the distribution of challenge and overturn rates across individual categorical profiles of home plate officials. The wide variance spans across differing quartiles, providing explicit evidence of non-uniform human strike zone application and proving the systemic necessity for analytical correction models. The flagged outliers were cleared as valid data.
@@ -606,7 +606,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 7: Catcher Offensive vs. Defensive Comparisons</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot7CatcherOffVsDef_Scatters.png" alt="Figure 7: Catcher Offensive vs Defensive Scatters" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot7CatcherOffVsDef_Scatters.png" alt="EDA Figure 7: Catcher Offensive vs Defensive Scatters" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This scatter chart evaluates the correlation between a catcher's individual offensive and defensive challenge aggressiveness and accuracy. The absence of a strong directional linear association implies that offensive visual acuity parameters do not necessarily transfer into defensive pitch-framing awareness profiles. Since batters tend to challenge at a higher rate than catchers but with a lower overturn rate, a majority of the data points fall on the expected side of the equality line for both plots.
@@ -617,11 +617,11 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 8: Challenge Breakdown by Pitch Classification Types</h3>
             <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot8.1PitchTypeBreakdownBatters_StackedBar.png" alt="Figure 8.1: Batter Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
-                <img src="images/edavisualizations/Plot8.2PitchTypeBreakdownCatchers_StackedBar.png" alt="Figure 8.2: Catcher Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot8.1PitchTypeBreakdownBatters_StackedBar.png" alt="EDA Figure 8.1: Batter Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot8.2PitchTypeBreakdownCatchers_StackedBar.png" alt="EDA Figure 8.2: Catcher Pitch Type Breakdown" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             <p>
-                <strong>Analysis Summary:</strong> These segmented stacked bar charts break down overall challenge outcomes relative to engineered ball flight properties (Fastballs, Breaking Balls, and Off-speed pitches). These plots tell constrasting stories for batters and catchers. Batters tend to struggle challenging fastballs compared to the other pitch types, while catchers show no real difference between the three.
+                <strong>Analysis Summary:</strong> These segmented stacked bar charts break down overall challenge outcomes relative to engineered ball flight properties (Fastballs, Breaking Balls, and Off-speed pitches). These plots tell contrasting stories for batters and catchers. Batters tend to struggle challenging fastballs compared to the other pitch types, while catchers show no real difference between the three.
             </p>
         </div>
 
@@ -629,8 +629,8 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 9: Challenge Rate vs Overturn Rate, Batters and Catchers</h3>
             <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 15px; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot9.1Batters_RegPlot.png" alt="Figure 9.1: Batter Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
-                <img src="images/edavisualizations/Plot9.2Catcher_RegPlot.png" alt="Figure 9.2: Defense Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot9.1Batters_RegPlot.png" alt="EDA Figure 9.1: Batter Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <img src="images/edavisualizations/Plot9.2Catcher_RegPlot.png" alt="EDA Figure 9.2: Defense Reg Plot" style="max-width: 48%; min-width: 280px; height: auto; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> These regression plots comparing the challenge and overturn rates for batters and catchers both have a slight positive slope, indicating that players who challenge more often are also more likely to have a higher overturn rate, although the relationships are weak. Comparing the values within these plots also reveals two key insights: catchers tend to challenge at a much lower rate than batters do, but also tend to have a significantly higher overturn rate.
@@ -641,7 +641,7 @@
         <div class="figure-block" style="margin-bottom: 50px; background: #fdfdfd; border: 1px solid #e1e4e6; padding: 20px; border-radius: 6px;">
             <h3 style="margin-top: 0; color: #222;">EDA Visualization 10: Catcher Workload Impact on Challenge Rate Regression Plot</h3>
             <div style="text-align: center; margin: 20px 0;">
-                <img src="images/edavisualizations/Plot10CatcherWorkloadVsChallengeRate_RegPlot.png" alt="Figure 10: Catcher Workload Impact" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <img src="images/edavisualizations/Plot10CatcherWorkloadVsChallengeRate_RegPlot.png" alt="EDA Figure 10: Catcher Workload Impact" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
             </div>
             <p>
                 <strong>Analysis Summary:</strong> This final regression plot shows the relationship between the number of opportunities a catcher has had to challenge a pitch and their challenge rate. The very slight upward slope of the trendline indicates there's no real linear relationship between these two variables. The spread of the challenge rates appears to decrease as the opportunities increases. 
