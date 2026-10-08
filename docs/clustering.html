@@ -173,14 +173,19 @@
           <p>
             To evaluate the structural properties of player strategy profiles, K-Means was executed across a range of constraints (<strong>k=2 through 7</strong>). The geometric validity of these partitions was assessed using silhouette coefficient width diagrams to identify the optimal k.
           </p>
-          
+
+          <p>
+            Analysis using silhouette scores identified <strong>k=2</strong> as the optimal number of clusters for both batters and catchers. This indicates a binary split between generally aggressive and generally conservative challengers, with no evidence of player subsets that selectively increase aggression in specific situations.
+          </p>
         </div>
 
         <!-- Batter Cluster Results Grid -->
         <h3>Batter Challenge Aggression Archetypes</h3>
-        <p>
-            Evaluating the continuous rate feature matrix for batters reveals a highly clean boundary partition at <strong>k=2</strong>. Beyond this point, increasing the cluster count forces arbitrary divisions that blur existing cluster definitions and introduce overlapping classification nodes.
-        </p>
+        <div class="content-block">
+            <p>
+              The <strong>k=2</strong> partition divides hitters into "Disciplined" and "High-Volume" challengers. Behavioral traits scale proportionally across variables, showing uniform baseline tendencies rather than situational selectivity. Crucially, overturn rates show no real difference between the two groups, with "Disciplined" challengers achieving a 48.6% overturn rate and the "High-Volume" cluster achieving 48.4%.
+            </p>
+        </div>
         
         <div class="vis-container" style="text-align: center; margin: 25px 0;">
             <img src="images/figures/clustering/SilhouetteScores-Batters.png" alt="Batter Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
@@ -205,8 +210,8 @@
                 <thead style="background-color: #0056b3; color: white;">
                     <tr>
                         <th>Feature Metric</th>
-                        <th>Cluster 0 (Disciplined Watchers)</th>
-                        <th>Cluster 1 (High-Volume Aggressors)</th>
+                        <th>Cluster 0 (Disciplined)</th>
+                        <th>Cluster 1 (High-Volume)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -234,9 +239,11 @@
 
         <!-- Catcher Cluster Results Grid -->
         <h3>Catcher Challenge Aggression Archetypes</h3>
-        <p>
-          Unsupervised categorization of catchers yields a matching structural profile, isolating a distinct behavioral division based on how aggressively they challenge.
-        </p>
+        <div class="content-block">
+            <p>
+              Catchers exhibit a similar binary division into "Conservative Challengers" and "Aggressive Challengers" based on <strong>k=2</strong> optimization. Mirroring the batter results, challenge overturn rates remain nearly identical between conservative (57.4%) and aggressive (57.2%) catchers.
+            </p>
+        </div>
     
         <div class="vis-container" style="text-align: center; margin: 25px 0;">
             <img src="images/figures/clustering/SilhouetteScores-Catchers.png" alt="Catcher Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
@@ -295,7 +302,9 @@
         <h2>Conclusions</h2>
 
         <div class="content-block">
-          
+          <p>
+            The silhouette score optimal <strong>k=2</strong> selection confirms that players maintain stable baseline risk tolerances rather than context-dependent aggression. Furthermore, the lack of difference in overturn rates across clusters for both batters and catchers demonstrates that increased challenge volume does not generally reduce review efficiency.
+          </p>
         </div>
 
       </div>
