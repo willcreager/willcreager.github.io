@@ -100,9 +100,21 @@
         <h2>Data Prep</h2>
 
         <div class="content-block">
-          
+          <p>
+            Unsupervised clustering algorithms require entirely unlabelled, continuous numeric inputs to compute accurate distance matrices without introducing systematic bias. To ensure a clean feature space that isolates pure tactical aggression, all non-numeric identifiers, player names, and team metadata registries were programmatically stripped from the datasets. Crucially, an explicit isolation rule was enforced to filter out all metrics detailing challenge overturn rates. Including success outcomes within the training matrix would cause the algorithms to group players by performance rather than habit, defeating the core research objective of assessing how blind strategic tendencies influence real-world overturn efficiency.
+          </p>
+          <p>
+            The resulting feature space comprises 15 distinct situational splits (ending strictly in the _Rate suffix), capturing player challenge frequencies across home versus away environments, inning groups, remaining challenges, and specific pitch type classifications. Because distance-based models are highly sensitive to variations in scale, these features were normalized using a standard Z-score transformation to establish a mean of zero and a standard deviation of one across all rows. To prevent low-sample anomalies from distorting the cluster boundaries, an opportunity threshold filter was applied to restrict the analysis to players with a minimum of 100 challenge opportunities during the season. Below are links to the datasets used for the clustering pipeline.
+          </p>
         </div>
         
+        <div class="dataset-links" style="margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #0056b3;">
+            <p><strong>Dataset Links:</strong></p>
+            <ul>
+                <li>Full-Season Batting Splits CSV: <a href="data/csvs/MLBData-ABSSituationalSplits-Batters-FullSeason.csv" target="_blank">MLBData-ABSSituationalSplits-Batters-FullSeason.csv</a></li>
+                <li>Full-Season Catching Splits CSV: <a href="data/csvs/MLBData-ABSSituationalSplits-Catchers-FullSeason.csv" target="_blank">MLBData-ABSSituationalSplits-Catchers-FullSeason.csv</a></li>
+            </ul>
+        </div>
       </div>
     </section>
 
