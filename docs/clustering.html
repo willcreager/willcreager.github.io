@@ -79,10 +79,18 @@
           </p>
           <p>
             The choice of distance metric fundamentally dictates how similarity is calculated within these multi-dimensional feature spaces. Standard partitional models rely on Euclidean distance, which measures the straight-line magnitude between coordinate points in space, making it highly sensitive to absolute differences in raw percentages. To complement this, the hierarchical model employs Cosine Similarity as its proximity measure to compute the angular divergence between vectors. By focusing on the direction of the strategic profile rather than the absolute scale, Cosine Distance evaluates the proportion and balance of a player's challenge habits—such as a tendency to favor breaking balls over fastballs—independent of their total volume of challenge opportunities.
-          </p>
-          
+          </p>       
         </div>
+        
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+          <img src="images/figures/PartitionalVsHierarchical.png" alt="Difference between types of clustering" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+          <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Conceptual diagram contrasting the iterative partitioning of space with nested hierarchical tree construction.</figcaption>
+        </figure>
 
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+          <img src="images/figures/CosineVsEuclidean.png" alt="Difference between Euclidean and Cosine distances" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+          <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: Geometric representation illustrating the structural differences between Euclidean magnitude distance and Cosine angular similarity.</figcaption>
+        </figure>
       </div>
     </section>
     
