@@ -164,10 +164,69 @@
     <!-- Results -->
     <section class="section section-alt">
       <div class="container">
-        <h2>Results</h2>
+        <h2>Clustering Results</h2>
 
         <div class="content-block">
+          <p>
+            To evaluate the structural properties of player strategy profiles, K-Means was executed across a range of constraints ($k=2$ through $k=7$). The geometric validity of these partitions was assessed using silhouette coefficient width diagrams to identify the optimal k.
+          </p>
           
+        </div>
+
+        <!-- Batter Cluster Results Grid -->
+        <h3>Batter Strategic Aggression Archetypes</h3>
+        <p>
+            Evaluating the continuous rate feature matrix for batters reveals a highly clean boundary partition at $k=2$. Beyond this point, increasing the cluster count forces arbitrary divisions that blur existing cluster definitions and introduce overlapping classification nodes.
+        </p>
+        
+        <div class="vis-container" style="text-align: center; margin: 25px 0;">
+            <img src="images/figures/clustering/SilhouetteScores-Batters.png" alt="Batter Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <p style="font-style: italic; font-size: 0.9em; text-align: left; padding: 0 5%;"><i>Figure 5: Batter Silhouette Coefficient diagnostic grids across multiple test counts. The $k=2$ configuration maximizes average width while preventing any cluster rows from dipping below the zero line.</i></p>
+        </div>
+    
+        <div class="vis-container" style="text-align: center; margin: 25px 0;">
+            <img src="images/figures/clustering/ClustersScatter-Batters.png" alt="Batter K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <p style="font-style: italic; font-size: 0.9em; text-align: left; padding: 0 10%;"><i>Figure 6: K-Means partition projection mapping total batter aggression profiles. The split separates the cohort into two clearly defined tiers of trigger frequency.</i></p>
+        </div>
+    
+        <div class="vis-container" style="text-align: center; margin: 25px 0;">
+            <img src="images/figures/clustering/Dendrogram-Batters.png" alt="Batter Hierarchical Cosine Dendrogram" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <p style="font-style: italic; font-size: 0.9em; text-align: left; padding: 0 5%;"><i>Figure 7: Hierarchical cluster tree utilizing angular cosine distance linkages. The tree's primary trunk division confirms the two master archetypes isolated by the K-Means partition.</i></p>
+        </div>
+    
+        <h4>Batter Archetype Table</h4>
+        <p>The table below tracks the complete situational averages across the isolated batter profiles, linking strategic habits directly to real-world review success outcomes:</p>
+        
+        <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
+            <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
+                <thead style="background-color: #0056b3; color: white;">
+                    <tr>
+                        <th>Feature Metric</th>
+                        <th>Cluster 0 (Disciplined Watchers)</th>
+                        <th>Cluster 1 (High-Volume Aggressors)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Player Count</strong></td><td>236</td><td>134</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Total Challenge Rate</strong></td><td>0.031</td><td>0.077</td></tr>
+                    <tr style="color: crimson; font-weight: bold;"><td><strong>Total Overturned Rate (Success)</strong></td><td>0.486</td><td>0.484</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Home Venue Rate</strong></td><td>0.031</td><td>0.078</td></tr>
+                    <tr><td><strong>Away Venue Rate</strong></td><td>0.032</td><td>0.076</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Team 2 Out-Remaining Rate</strong></td><td>0.032</td><td>0.075</td></tr>
+                    <tr><td><strong>Team 1 Out-Remaining Rate</strong></td><td>0.031</td><td>0.082</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Innings 1-3 (2 Challenges Left)</strong></td><td>0.021</td><td>0.055</td></tr>
+                    <tr><td><strong>Innings 1-3 (1 Challenge Left)</strong></td><td>0.018</td><td>0.052</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Innings 4-6 (2 Challenges Left)</strong></td><td>0.033</td><td>0.079</td></tr>
+                    <tr><td><strong>Innings 4-6 (1 Challenge Left)</strong></td><td>0.022</td><td>0.063</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Innings 7-9 (2 Challenges Left)</strong></td><td>0.052</td><td>0.105</td></tr>
+                    <tr><td><strong>Innings 7-9 (1 Challenge Left)</strong></td><td>0.036</td><td>0.099</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Extra Innings (2 Challenges Left)</strong></td><td>0.086</td><td>0.277</td></tr>
+                    <tr><td><strong>Extra Innings (1 Challenge Left)</strong></td><td>0.067</td><td>0.192</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Fastball Rate</strong></td><td>0.032</td><td>0.077</td></tr>
+                    <tr><td><strong>Breaking Ball Rate</strong></td><td>0.029</td><td>0.074</td></tr>
+                    <tr style="background-color: #f2f2f2;"><td><strong>Offspeed/Other Rate</strong></td><td>0.033</td><td>0.088</td></tr>
+                </tbody>
+            </table>
         </div>
         
       </div>
