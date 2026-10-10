@@ -171,11 +171,7 @@
 
         <div class="content-block">
           <p>
-            To evaluate the structural properties of player strategy profiles, K-Means was executed across a range of constraints (<strong>k=2 through 7</strong>). The geometric validity of these partitions was assessed using silhouette coefficient width diagrams to identify the optimal k.
-          </p>
-
-          <p>
-            Analysis using silhouette scores identified <strong>k=2</strong> as the optimal number of clusters for both batters and catchers. This indicates a binary split between generally aggressive and generally conservative challengers, with no evidence of player subsets that selectively increase aggression in specific situations.
+            To determine the underlying structure of player challenge trends, the partitional algorithm was executed across a range of constraints (<strong>k=2</strong> through <strong>k=7</strong>). The mathematical validity of these spatial partitions was evaluated by assessing the silhouette scores across both datasets. 
           </p>
         </div>
 
@@ -183,7 +179,7 @@
         <h3>Batter Challenge Aggression Archetypes</h3>
         <div class="content-block">
             <p>
-              The <strong>k=2</strong> partition divides hitters into "Disciplined" and "High-Volume" challengers. Behavioral traits scale proportionally across variables, showing uniform baseline tendencies rather than situational selectivity. Crucially, overturn rates show no real difference between the two groups, with "Disciplined" challengers achieving a 48.6% overturn rate and the "High-Volume" cluster achieving 48.4%.
+              Evaluating the continuous rate feature matrix for batters reveals a highly clean boundary partition at <strong>k=2</strong>, which optimizes structural cohesion by maximizing the average global silhouette score at <strong>0.299</strong>. Beyond this point, increasing the cluster constraint forces arbitrary subdivisions that blur existing archetype definitions and introduce overlapping classification nodes with highly unstable, sub-zero silhouette widths. As visualized in the silhouette diagnostic grid, the binary configuration ensures that all data rows maintain deep, positive coefficients, validating a robust structural split across the player base.
             </p>
         </div>
         
@@ -191,15 +187,27 @@
             <img src="images/figures/clustering/SilhouetteScores-Batters.png" alt="Batter Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: Batter Silhouette Coefficient diagnostic grids across multiple test counts. The <strong>k=2</strong> configuration maximizes average width while preventing any cluster rows from dipping below the zero line.</figcaption>
         </figure>
+
+        <div class="content-block">
+            <p>
+              The partitional model divides the 370 filtered hitters into two distinct operational tiers: <strong>Cluster 0 ("Disciplined")</strong> containing <strong>236 players</strong>, and <strong>Cluster 1 ("High-Volume")</strong> containing <strong>134 players</strong>. When projected onto the spatial scatter coordinate plane comparing overall challenge rate to overturn rate, the clusters can be cleanly split on overturn rate. However, no clear patterns exist tying the clusters to overturn rate, except that the most extreme values tend to belong to Cluster 0.
+            </p>
+        </div>
     
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/clustering/ClustersScatter-Batters.png" alt="Batter K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: K-Means partition projection mapping total batter challenge aggression profiles. The split separates the batters into two clearly defined tiers of challenge frequency.</figcaption>
         </figure>
+
+        <div class="content-block">
+            <p>
+              Crucially, a cross-evaluation of the post-modeling performance matrix demonstrates that the final <strong>Total Overturned Rate</strong> remains virtually identical between the two clusters, stabilizing at <strong>48.6% for Cluster 0</strong> and <strong>48.4% for Cluster 1</strong>. This lack of variance proves that increased challenge volume does not dilute review precision or quality. Furthermore, cutting the hierarchical dendrogram (figure 7) horizontally at its highest distance junction reveals a massive vertical drop-off before fragmenting into sub-branches, providing strong visual confirmation that batters split cleanly into two main behavioral archetypes.
+            </p>
+        </div>
     
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/clustering/Dendrogram-Batters.png" alt="Batter Hierarchical Cosine Dendrogram" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
-            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: Hierarchical cluster tree utilizing angular cosine distance linkages. The tree's primary trunk division confirms the two master archetypes isolated by the K-Means partition.</figcaption>
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: Hierarchical cluster tree utilizing angular cosine distance linkages. The tree's primary trunk division confirms the two main archetypes isolated by the K-Means partition.</figcaption>
         </figure>
     
         <h4>Batter Archetypes Table</h4>
@@ -241,7 +249,7 @@
         <h3>Catcher Challenge Aggression Archetypes</h3>
         <div class="content-block">
             <p>
-              Catchers exhibit a similar binary division into "Conservative Challengers" and "Aggressive Challengers" based on <strong>k=2</strong> optimization. Mirroring the batter results, challenge overturn rates remain nearly identical between conservative (57.4%) and aggressive (57.2%) catchers.
+              Unsupervised clustering of the catcher dataset yields a matching binary paradigm. Evaluating the silhouette scores confirms that a <strong>k=2</strong> partition yields the most stable and consistent structure. Raising the cluster count to <strong>k=3</strong> or higher immediately causes the average coefficient line to drop sharply and forces tightly packed cluster blocks into volatile, overlapping partitions, verifying that further data segmentation creates artificial classifications without true merit.
             </p>
         </div>
     
@@ -249,11 +257,23 @@
             <img src="images/figures/clustering/SilhouetteScores-Catchers.png" alt="Catcher Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: Catcher Silhouette diagnostic grids verifying a clean, stable structure at <strong>k=2</strong>, with width consistency breaking down as the cluster parameter increases.</figcaption>
         </figure>
+
+        <div class="content-block">
+            <p>
+              This optimized model isolates a distinct behavioral division, separating the 104 qualified catchers into <strong>Cluster 1 ("Conservative Challengers")</strong> comprising <strong>64 players</strong>, and <strong>Cluster 0 ("Aggressive Challengers")</strong> comprising <strong>40 players</strong>. Across the league, catchers deploy challenges far less frequently than batters, reflecting the strict systemic risk of losing a challenge while in the field. Aggressive Challengers trigger reviews at an overall rate of <strong>3.1%</strong>, whereas Conservative Challengers maintain a cautious <strong>1.8% challenge frequency</strong>. The scatter plot below compares the challenge and overturn rates of players grouped by these clusters, once again showing no clear correlation between a catcher's cluster and their overturn rate.
+            </p>
+        </div>
     
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/clustering/ClustersScatter-Catchers.png" alt="Catcher K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
-            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 9: Scatter projection mapping isolated catcher archetypes across overall challenge rate and overturn rate.</figcaption>
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 9: Scatter plot mapping isolated catcher archetypes across overall challenge rate and overturn rate.</figcaption>
         </figure>
+
+        <div class="content-block">
+            <p>
+              Mirroring the batter results, the final <strong>Total Overturned Rate (Success)</strong> remains perfectly synchronized between the two catcher clusters, establishing a flat baseline of <strong>57.4% for Cluster 1</strong> and <strong>57.2% for Cluster 0</strong>. This complete absence of an outcome gradient indicates that review accuracy is governed by individual tracking ability and other factors rather than a catcher's general challenge aggressiveness. The hierarchical tree architecture calculated via angular cosine distances backs this up; the prominent vertical trunk of the dendrogram drops down into two main branches, confirming that individual defensive risk thresholds represent the dominant structural force.
+            </p>
+        </div>
     
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/clustering/Dendrogram-Catchers.png" alt="Catcher Hierarchical Cosine Dendrogram" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
