@@ -204,7 +204,12 @@
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: </figcaption>
         </figure>
     
-        <h4>Batter PC Loadings Table</h4>     
+        <h4>Batter PC Loadings Table</h4>
+        <div class="content-block">
+          <p>
+            An evaluation of the calculated feature loadings for the batter dataset reveals the underlying variables driving player strategy variance. PC1 functions as a <strong>Global Aggression Index</strong>, characterized by strong, uniform positive weights across nearly all situational metrics. The heaviest loadings exist on the baseline 2 Challenges Left Rate (0.349) and Fastball Rate (0.347), indicating that PC1 primarily captures an athlete's baseline risk tolerance and general willingness to challenge pitches. Conversely, PC2 operates as a <strong>Remaining Resource Leverage Axis</strong>. It is dominated by a massive positive weight for the 1 Challenge Left Rate (0.469) contrasted against heavy negative weights for 2 Challenges Left (-0.303) and Extra Innings, 2 Challenges Left rates (-0.362). This mathematical contrast isolates a strategic shift in leverage, separating hitters who maintain context-independent, uniform aggression from those who selectively adjust their trigger tendencies based on diminishing team review resources.
+          </p>
+        </div>
         <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
             <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
                 <thead style="background-color: #0056b3; color: white;">
@@ -238,7 +243,7 @@
         <h3>Catcher PCA Results</h3>
         <div class="content-block">
           <p>
-            For the catcher dataset, PC1 captures 47.59% of the total variance. A massive drop-off follows as PC2 accounts for only 8.42% of the spread. Similar to the batter analysis, the scree plot indicates that the first six PCs are required to successfully reach the 80% cumulative threshold. PC1 serves as a <strong>Global Defensive Aggression Index</strong>, while PC2 acts as an <strong>Inning Context and Leverage Axis</strong> defined by weights for early and late inning challenge rates.
+            For the catcher dataset, PC1 captures 47.59% of the total variance. A massive drop-off follows as PC2 accounts for only 8.42% of the spread. Similar to the batter analysis, the scree plot indicates that the first six PCs are required to successfully reach the 80% cumulative threshold. PC1 serves as a <strong>Global Aggression Index</strong>, while PC2 acts as an <strong>Inning Context and Leverage Axis</strong> defined by weights for early and late inning challenge rates.
           </p>
             
         </div>
@@ -264,6 +269,11 @@
     
     
         <h4>Catcher PC Loadings Table</h4>
+        <div class="content-block">
+          <p>
+            Analyzing the calculated eigenvector weights for the catcher dataset uncovers a matching structural paradigm within defensive challenge strategies. PC1 serves as a <strong>Global Aggression Index</strong>, exhibiting highly consistent, positive loadings across almost all tracking metrics. The highest alignment weights are concentrated on the baseline 2 Challenges Left Rate (0.346) and Fastball Rate (0.337), illustrating that the primary axis of variance simply ranks catchers by their macro-level challenge deployment volume. In contrast, PC2 functions as an <strong>Inning Context and Leverage Axis</strong>. This dimension is mathematically defined by heavy positive loadings for the 1 Challenge Left Rate (0.397), particularly in early (0.514) or late (0.439) inning situations, which are explicitly polarized against negative weights for late-innning situations with both challenges remaining. This linear transformation effectively separates conservative catchers who protect their review resources early in games from those who exhibit heightened context-dependent aggression under high-leverage defensive pressure.
+          </p>
+        </div>
         <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
             <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
                 <thead style="background-color: #0056b3; color: white;">
