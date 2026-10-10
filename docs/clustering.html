@@ -179,7 +179,7 @@
         <h3>Batter Challenge Aggression Archetypes</h3>
         <div class="content-block">
             <p>
-              Evaluating the continuous rate feature matrix for batters reveals a highly clean boundary partition at <strong>k=2</strong>, which optimizes structural cohesion by maximizing the average global silhouette score at <strong>0.299</strong>. Beyond this point, increasing the cluster constraint forces arbitrary subdivisions that blur existing archetype definitions and introduce overlapping classification nodes with highly unstable, sub-zero silhouette widths. As visualized in the silhouette diagnostic grid, the binary configuration ensures that all data rows maintain deep, positive coefficients, validating a robust structural split across the player base.
+              Evaluating the continuous rate feature matrix for batters reveals a highly clean boundary partition at <strong>k=2</strong>, which optimizes structural cohesion by maximizing the average global silhouette score at <strong>0.299</strong>. Beyond this point, increasing the cluster constraint forces arbitrary subdivisions that blur existing archetype definitions and introduce overlapping classification nodes with highly unstable, sub-zero silhouette widths. As visualized in the silhouette diagnostic grid (figure 5), the binary configuration ensures that all data rows maintain deep, positive coefficients, validating a robust structural split across the player base.
             </p>
         </div>
         
@@ -190,13 +190,13 @@
 
         <div class="content-block">
             <p>
-              The partitional model divides the 370 filtered hitters into two distinct operational tiers: <strong>Cluster 0 ("Disciplined")</strong> containing <strong>236 players</strong>, and <strong>Cluster 1 ("High-Volume")</strong> containing <strong>134 players</strong>. When projected onto the spatial scatter coordinate plane comparing overall challenge rate to overturn rate, the clusters can be cleanly split on overturn rate. However, no clear patterns exist tying the clusters to overturn rate, except that the most extreme values tend to belong to Cluster 0.
+              The partitional model divides the 370 filtered hitters into two distinct operational tiers: <strong>Cluster 0 ("Disciplined")</strong> containing <strong>236 players</strong>, and <strong>Cluster 1 ("High-Volume")</strong> containing <strong>134 players</strong>. When projected onto the spatial scatter coordinate plane comparing overall challenge rate to overturned rate, the clusters can be cleanly split on challenge rate. However, no clear patterns exist tying the clusters to overturned rate, except that the most extreme values tend to belong to Cluster 0.
             </p>
         </div>
     
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/clustering/ClustersScatter-Batters.png" alt="Batter K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
-            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: K-Means partition projection mapping total batter challenge aggression profiles. The split separates the batters into two clearly defined tiers of challenge frequency.</figcaption>
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: Scatter plot comparing challenge and overturned rates for batters, grouped by their cluster.</figcaption>
         </figure>
 
         <div class="content-block">
@@ -211,7 +211,7 @@
         </figure>
     
         <h4>Batter Archetypes Table</h4>
-        <p>The table below tracks the complete situational averages across the isolated batter profiles, linking strategic habits directly to real-world review success outcomes:</p>
+        <p>The table below tracks the complete situational averages across the isolated batter profiles, linking strategic habits directly to review success rates:</p>
         
         <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
             <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
@@ -280,7 +280,9 @@
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 10: Hierarchical tree architecture for catchers, confirming two clear operational paths based on angular cosine distance metrics.</figcaption>
         </figure>
     
-        <h4>Catcher Archetypes Matrix</h4>
+        <h4>Catcher Archetypes Table</h4>
+        <p>The table below tracks the complete situational averages across the isolated catcher profiles, linking strategic habits directly to review success rates:</p>
+
         <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
             <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
                 <thead style="background-color: #28a745; color: white;">
