@@ -152,7 +152,60 @@
         <h2>Results</h2>
 
         <div class="content-block">
-          
+          <p>
+            To evaluate the structural properties of player strategy profiles, K-Means was executed across a range of constraints (<strong>k=2 through 7</strong>). The geometric validity of these partitions was assessed using silhouette coefficient width diagrams to identify the optimal k.
+          </p>
+
+          <p>
+            Analysis using silhouette scores identified <strong>k=2</strong> as the optimal number of clusters for both batters and catchers. This indicates a binary split between generally aggressive and generally conservative challengers, with no evidence of player subsets that selectively increase aggression in specific situations.
+          </p>
+        </div>
+
+        <!-- Batter PCA Results Grid -->
+        <h3>Batter PCA Results</h3>
+        <div class="content-block">
+            
+        </div>
+        
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/pca/ScreePlot-Batters.png" alt="Batter Scree Plot" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: </figcaption>
+        </figure>
+    
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/pca/2DPCSpace-Batters.png" alt="Batter K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: </figcaption>
+        </figure>
+    
+        <h4>Batter PC Loadings Table</h4>     
+        <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
+            <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
+                
+            </table>
+        </div>
+
+        <!-- Catcher PCA Results Grid -->
+        <h3>Catcher PCA Results</h3>
+        <div class="content-block">
+            
+        </div>
+    
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/pca/ScreePlot-Catchers.png" alt="Catcher Silhouette Diagnostic Grid" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: Catcher Silhouette diagnostic grids verifying a clean, stable structure at <strong>k=2</strong>, with width consistency breaking down as the cluster parameter increases.</figcaption>
+        </figure>
+    
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/pca/2DPCSpace-Catchers.png" alt="Catcher K-Means Scatter Matrix" style="max-width: 75%; height: auto; border: 1px solid #ccc; margin-bottom: 5px;">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: Scatter projection mapping isolated catcher archetypes across overall challenge rate and overturn rate.</figcaption>
+        </figure>
+    
+    
+        <h4>Catcher PC Loadings Table</h4>
+        <div class="table-responsive" style="margin: 20px 0; overflow-x: auto;">
+            <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
+                
+            </table>
         </div>
         
       </div>
