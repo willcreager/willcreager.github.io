@@ -71,6 +71,21 @@
         <h2>Naive Bayes Overview</h2>
 
         <div class="content-block">
+          <p>
+            Naive Bayes represents a foundational class of supervised, probabilistic classification algorithms grounded in Bayes' Theorem. The core paradigm relies on the "naive" conditional independence assumption that every feature is completely independent of each other given the target class label. By multiplying the independent feature likelihoods alongside the overall class prior probability, the model efficiently computes the joint posterior probability. In machine learning pipelines, different structural variants of the Naive Bayes architecture are deployed depending entirely on the mathematical distribution and data types of the independent variables.
+          </p>
+          
+          <h3>The Mathematical Variants of Naive Bayes</h3>
+          <ul>
+            <li><strong>Gaussian Naive Bayes:</strong> Tailored strictly for continuous numeric variables. It assumes that the continuous features associated with each class follow a Gaussian bell curve distribution.</li>
+            <li><strong>Multinomial Naive Bayes:</strong> Designed for discrete event count variables. It models feature vectors where features represent counts or frequencies of occurrences, such as the number of times a word appears in an email.</li>
+            <li><strong>Bernoulli Naive Bayes:</strong> Engineered for binary or boolean independent features. It evaluates the simple presence or absence of a specific characteristic.</li>
+            <li><strong>Categorical Naive Bayes:</strong> Optimized for discrete categorical features with fixed ranges. It assumes each feature has its own categorical distribution.</li>
+          </ul>
+          
+          <p>
+            Within the scope of this research project, distinct situational features are synthesized into a Unified Hybrid Naive Bayes Pipeline. Because the features are a combination of continuous data (spatial pitch location coordinates, inning), categorical data (count, outs, challenges left), and binary data (booleans indicating bases occupied), a single uniform model would violate the distribution assumptions. This hybrid pipeline was used for four distinct predictive tasks: predicting if a called strike will be challenged by the batter, if a called ball will be challenged by the pitcher/catcher, if a batter’s challenge will be overturned, and if a pitcher/catcher’s challenge will be overturned.
+          </p>
             
         </div>
 
