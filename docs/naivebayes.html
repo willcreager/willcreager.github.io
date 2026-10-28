@@ -98,6 +98,37 @@
         <h2>Data Prep</h2>
 
         <div class="content-block">
+          <p>
+            Supervised machine learning algorithms fundamentally require a fully labeled historical dataset to map patterns and build predictive classifications. In unsupervised learning (such as Clustering and PCA), models identify underlying archetypes without knowing the true results. Supervised learning, however, relies on these pre-established target labels to calculate mathematical feature likelihoods and conditional probabilities. For the Naive Bayes tasks, the data is explicitly structured around two distinct types of labeled outputs:
+          </p>
+          <ul>
+            <li><strong>Challenge Intent (“Will pitch get challenged?”) Targets:</strong> Labeled as "Challenged" (1) or "Not Challenged" (0).</li>
+            <li><strong>Challenge Outcome (“Will challenge get overturned?”) Targets:</strong> Labeled as "Overturned" (1) or "Confirmed" (0).</li>
+          </ul>
+
+          <p>
+            To validate the models cleanly and ensure high academic rigor, each dataset is randomly partitioned into a Training Set (80%) and a Testing Set (20%). These subsets must remain completely disjoint to eliminate data leakage. Evaluating a model on the same data used to train it artificially inflates testing accuracy and leaves the model unprepared to predict live pitches.
+          </p>
+
+          <h3>Multi-Pipeline Feature Segmentation</h3>
+
+          <p>
+            Unlike standard Naive Bayes scripts that force a single mathematical distribution over mixed parameters, the custom HybridNaiveBayes pipeline programmatically segments features into isolated subsets based on their underlying data properties:
+          </p>
+          <ul>
+            <li><strong>Continuous Features (GaussianNB):</strong> plateTimeX, plateTimeY_topDiff, plateTimeY_BotDiff, startSpeed, inning, netScore</li>
+            <li><strong>Discrete Features (CategoricalNB):</strong> prePitchBalls, prePitchStrikes, outs, challengesLeft, pitchTypeGroup</li>
+            <li><strong>Boolean Features (BernoulliNB):</strong> runnerOn1st, runnerOn2nd, runnerOn3rd</li>
+          </ul>
+
+          <h3>Overcoming Severe Class Imbalance</h3>
+
+          <p>
+            Data exploration revealed a massive structural skew in the challenge intent models, where pitches are recorded as Not Challenged more than 95% of the time. If trained on this split, a uniform classifier falls into a majority-class trap—it simply guesses Not Challenged for every single pitch, yielding a technically high accuracy score but a completely useless 0.00 recall rate for the Challenged class.
+          </p>
+          <p>
+            To correct for this, the pipeline integrates a specialized threshold-balancing routine. By calculating the explicit mathematical log-odds penalty of the skewed baseline classes, the predict step applies a tunable bias modifier directly to the final boundary line. This balancing protocol shifts the model's focus away from class rarity and toward feature-driven telemetry. This ensures the algorithm catches challengeable gray-zone situations, successfully optimizing the Macro F1-Score when the bias hyperparameter is correctly tuned.
+          </p>
           
         </div>
         
