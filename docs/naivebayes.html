@@ -72,21 +72,21 @@
 
         <div class="content-block">
           <p>
-            Naive Bayes represents a foundational class of supervised, probabilistic classification algorithms grounded in Bayes' Theorem. The core paradigm relies on the "naive" conditional independence assumption that every feature is completely independent of each other given the target class label. By multiplying the independent feature likelihoods alongside the overall class prior probability, the model efficiently computes the joint posterior probability. In machine learning pipelines, different structural variants of the Naive Bayes architecture are deployed depending entirely on the mathematical distribution and data types of the independent variables.
+            Naive Bayes represents a foundational class of supervised, probabilistic classification algorithms grounded in Bayes' Theorem. The core paradigm relies on the "naive" conditional independence assumption that every feature is completely independent of each other given the target class label. By multiplying the independent feature likelihoods alongside the overall class prior probability, the model efficiently computes the joint posterior probability. In machine learning pipelines, different structural variants of the Naive Bayes architecture (listed below) are deployed depending entirely on the mathematical distribution and data types of the independent variables.
+          </p>
+
+          <p>
+            Within the scope of this research project, distinct situational features are synthesized into a Unified Hybrid Naive Bayes Pipeline. Because the features are a combination of continuous data (spatial pitch location coordinates, inning), categorical data (count, outs, challenges left), and binary data (booleans indicating bases occupied), a single uniform model would violate the distribution assumptions. This hybrid pipeline was used for four distinct predictive tasks: predicting if a called strike will be challenged by the batter, if a called ball will be challenged by the pitcher/catcher, if a batter’s challenge will be overturned, and if a pitcher/catcher’s challenge will be overturned.
           </p>
           
           <h3>The Mathematical Variants of Naive Bayes</h3>
           <ul>
-            <li><strong>Gaussian Naive Bayes:</strong> Tailored strictly for continuous numeric variables. It assumes that the continuous features associated with each class follow a Gaussian bell curve distribution.</li>
-            <li><strong>Multinomial Naive Bayes:</strong> Designed for discrete event count variables. It models feature vectors where features represent counts or frequencies of occurrences, such as the number of times a word appears in an email.</li>
-            <li><strong>Bernoulli Naive Bayes:</strong> Engineered for binary or boolean independent features. It evaluates the simple presence or absence of a specific characteristic.</li>
-            <li><strong>Categorical Naive Bayes:</strong> Optimized for discrete categorical features with fixed ranges. It assumes each feature has its own categorical distribution.</li>
+            <li style="padding-left: 30px;"><strong>Gaussian Naive Bayes:</strong> Tailored strictly for continuous numeric variables. It assumes that the continuous features associated with each class follow a Gaussian bell curve distribution.</li>
+            <li style="padding-left: 30px;"><strong>Multinomial Naive Bayes:</strong> Designed for discrete event count variables. It models feature vectors where features represent counts or frequencies of occurrences, such as the number of times a word appears in an email.</li>
+            <li style="padding-left: 30px;"><strong>Bernoulli Naive Bayes:</strong> Engineered for binary or boolean independent features. It evaluates the simple presence or absence of a specific characteristic.</li>
+            <li style="padding-left: 30px;"><strong>Categorical Naive Bayes:</strong> Optimized for discrete categorical features with fixed ranges. It assumes each feature has its own categorical distribution.</li>
           </ul>
           
-          <p>
-            Within the scope of this research project, distinct situational features are synthesized into a Unified Hybrid Naive Bayes Pipeline. Because the features are a combination of continuous data (spatial pitch location coordinates, inning), categorical data (count, outs, challenges left), and binary data (booleans indicating bases occupied), a single uniform model would violate the distribution assumptions. This hybrid pipeline was used for four distinct predictive tasks: predicting if a called strike will be challenged by the batter, if a called ball will be challenged by the pitcher/catcher, if a batter’s challenge will be overturned, and if a pitcher/catcher’s challenge will be overturned.
-          </p>
-            
         </div>
 
       </div>
@@ -102,10 +102,10 @@
             Supervised machine learning algorithms fundamentally require a fully labeled historical dataset to map patterns and build predictive classifications. In unsupervised learning (such as Clustering and PCA), models identify underlying archetypes without knowing the true results. Supervised learning, however, relies on these pre-established target labels to calculate mathematical feature likelihoods and conditional probabilities. For the Naive Bayes tasks, the data is explicitly structured around two distinct types of labeled outputs:
           </p>
           <ul>
-            <li><strong>Challenge Intent (“Will pitch get challenged?”) Targets:</strong> Labeled as "Challenged" (1) or "Not Challenged" (0).</li>
-            <li><strong>Challenge Outcome (“Will challenge get overturned?”) Targets:</strong> Labeled as "Overturned" (1) or "Confirmed" (0).</li>
+            <li style="padding-left: 30px;"><strong>Challenge Intent (“Will pitch get challenged?”) Targets:</strong> Labeled as "Challenged" (1) or "Not Challenged" (0).</li>
+            <li style="padding-left: 30px;"><strong>Challenge Outcome (“Will challenge get overturned?”) Targets:</strong> Labeled as "Overturned" (1) or "Confirmed" (0).</li>
           </ul>
-
+          <br>
           <p>
             To validate the models cleanly and ensure high academic rigor, each dataset is randomly partitioned into a Training Set (80%) and a Testing Set (20%). These subsets must remain completely disjoint to eliminate data leakage. Evaluating a model on the same data used to train it artificially inflates testing accuracy and leaves the model unprepared to predict live pitches.
           </p>
@@ -116,11 +116,11 @@
             Unlike standard Naive Bayes scripts that force a single mathematical distribution over mixed parameters, the custom HybridNaiveBayes pipeline programmatically segments features into isolated subsets based on their underlying data properties:
           </p>
           <ul>
-            <li><strong>Continuous Features (GaussianNB):</strong> plateTimeX, plateTimeY_topDiff, plateTimeY_BotDiff, startSpeed, inning, netScore</li>
-            <li><strong>Discrete Features (CategoricalNB):</strong> prePitchBalls, prePitchStrikes, outs, challengesLeft, pitchTypeGroup</li>
-            <li><strong>Boolean Features (BernoulliNB):</strong> runnerOn1st, runnerOn2nd, runnerOn3rd</li>
+            <li style="padding-left: 30px;"><strong>Continuous Features (GaussianNB):</strong> plateTimeX, plateTimeY_topDiff, plateTimeY_BotDiff, startSpeed, inning, netScore</li>
+            <li style="padding-left: 30px;"><strong>Discrete Features (CategoricalNB):</strong> prePitchBalls, prePitchStrikes, outs, challengesLeft, pitchTypeGroup</li>
+            <li style="padding-left: 30px;"><strong>Boolean Features (BernoulliNB):</strong> runnerOn1st, runnerOn2nd, runnerOn3rd</li>
           </ul>
-
+          <br>
           <h3>Overcoming Severe Class Imbalance</h3>
 
           <p>
