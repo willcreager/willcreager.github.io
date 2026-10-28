@@ -65,6 +65,132 @@
   <!-- Main Content -->
   <main>
 
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <h2>Naive Bayes Overview</h2>
+
+        <div class="content-block">
+          <p>
+            Naive Bayes represents a foundational class of supervised, probabilistic classification algorithms grounded in Bayes' Theorem. The core paradigm relies on the "naive" conditional independence assumption that every feature is completely independent of each other given the target class label. By multiplying the independent feature likelihoods alongside the overall class prior probability, the model efficiently computes the joint posterior probability. In machine learning pipelines, different structural variants of the Naive Bayes architecture are deployed depending entirely on the mathematical distribution and data types of the independent variables.
+          </p>
+          
+          <h3>The Mathematical Variants of Naive Bayes</h3>
+          <ul>
+            <li><strong>Gaussian Naive Bayes:</strong> Tailored strictly for continuous numeric variables. It assumes that the continuous features associated with each class follow a Gaussian bell curve distribution.</li>
+            <li><strong>Multinomial Naive Bayes:</strong> Designed for discrete event count variables. It models feature vectors where features represent counts or frequencies of occurrences, such as the number of times a word appears in an email.</li>
+            <li><strong>Bernoulli Naive Bayes:</strong> Engineered for binary or boolean independent features. It evaluates the simple presence or absence of a specific characteristic.</li>
+            <li><strong>Categorical Naive Bayes:</strong> Optimized for discrete categorical features with fixed ranges. It assumes each feature has its own categorical distribution.</li>
+          </ul>
+          
+          <p>
+            Within the scope of this research project, distinct situational features are synthesized into a Unified Hybrid Naive Bayes Pipeline. Because the features are a combination of continuous data (spatial pitch location coordinates, inning), categorical data (count, outs, challenges left), and binary data (booleans indicating bases occupied), a single uniform model would violate the distribution assumptions. This hybrid pipeline was used for four distinct predictive tasks: predicting if a called strike will be challenged by the batter, if a called ball will be challenged by the pitcher/catcher, if a batter’s challenge will be overturned, and if a pitcher/catcher’s challenge will be overturned.
+          </p>
+            
+        </div>
+
+      </div>
+    </section>
+    
+    <!-- Data Prep -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Data Prep</h2>
+
+        <div class="content-block">
+          <p>
+            Supervised machine learning algorithms fundamentally require a fully labeled historical dataset to map patterns and build predictive classifications. In unsupervised learning (such as Clustering and PCA), models identify underlying archetypes without knowing the true results. Supervised learning, however, relies on these pre-established target labels to calculate mathematical feature likelihoods and conditional probabilities. For the Naive Bayes tasks, the data is explicitly structured around two distinct types of labeled outputs:
+          </p>
+          <ul>
+            <li><strong>Challenge Intent (“Will pitch get challenged?”) Targets:</strong> Labeled as "Challenged" (1) or "Not Challenged" (0).</li>
+            <li><strong>Challenge Outcome (“Will challenge get overturned?”) Targets:</strong> Labeled as "Overturned" (1) or "Confirmed" (0).</li>
+          </ul>
+
+          <p>
+            To validate the models cleanly and ensure high academic rigor, each dataset is randomly partitioned into a Training Set (80%) and a Testing Set (20%). These subsets must remain completely disjoint to eliminate data leakage. Evaluating a model on the same data used to train it artificially inflates testing accuracy and leaves the model unprepared to predict live pitches.
+          </p>
+
+          <h3>Multi-Pipeline Feature Segmentation</h3>
+
+          <p>
+            Unlike standard Naive Bayes scripts that force a single mathematical distribution over mixed parameters, the custom HybridNaiveBayes pipeline programmatically segments features into isolated subsets based on their underlying data properties:
+          </p>
+          <ul>
+            <li><strong>Continuous Features (GaussianNB):</strong> plateTimeX, plateTimeY_topDiff, plateTimeY_BotDiff, startSpeed, inning, netScore</li>
+            <li><strong>Discrete Features (CategoricalNB):</strong> prePitchBalls, prePitchStrikes, outs, challengesLeft, pitchTypeGroup</li>
+            <li><strong>Boolean Features (BernoulliNB):</strong> runnerOn1st, runnerOn2nd, runnerOn3rd</li>
+          </ul>
+
+          <h3>Overcoming Severe Class Imbalance</h3>
+
+          <p>
+            Data exploration revealed a massive structural skew in the challenge intent models, where pitches are recorded as Not Challenged more than 95% of the time. If trained on this split, a uniform classifier falls into a majority-class trap—it simply guesses Not Challenged for every single pitch, yielding a technically high accuracy score but a completely useless 0.00 recall rate for the Challenged class.
+          </p>
+          <p>
+            To correct for this, the pipeline integrates a specialized threshold-balancing routine. By calculating the explicit mathematical log-odds penalty of the skewed baseline classes, the predict step applies a tunable bias modifier directly to the final boundary line. This balancing protocol shifts the model's focus away from class rarity and toward feature-driven telemetry. This ensures the algorithm catches challengeable gray-zone situations, successfully optimizing the Macro F1-Score when the bias hyperparameter is correctly tuned.
+          </p>
+          
+        </div>
+        
+        <div class="dataset-links" style="margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #0056b3;">
+            <p><strong>Dataset Links:</strong></p>
+            
+        </div>
+
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+          
+        </figure>
+
+        <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+          
+        </figure>
+      </div>
+    </section>
+
+    <!-- Code -->
+    <section class="section">
+      <div class="container">
+        <h2>Code</h2>
+
+        <div class="content-block">
+          
+        </div>
+        <!-- START OF NOTEBOOK LINK SECTION -->
+        <div class="notebook-header-banner" style="max-width: 1200px; margin: 30px auto; background: #f8f9fa; border: 1px solid #e1e4e6; border-left: 5px solid #0056b3; padding: 25px; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                
+            </div>
+        </div>
+        <!-- END OF NOTEBOOK LINK SECTION -->
+
+      </div>
+    </section>
+    
+    <!-- Results -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Results</h2>
+
+        <div class="content-block">
+          
+        </div>
+
+        
+      </div>
+    </section>
+
+    <!-- Conclusions -->
+    <section class="section">
+      <div class="container">
+        <h2>Conclusions</h2>
+
+        <div class="content-block">
+          
+        </div>
+
+      </div>
+    </section>
+
 
   </main>
 
