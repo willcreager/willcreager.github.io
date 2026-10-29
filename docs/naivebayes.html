@@ -227,10 +227,65 @@
           </ul>
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/naivebayes/BatterOutcomeConfusionMatrix.png" alt="Confusion Matrix for Batter Challenge Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
-            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: The imbalanced Confusion Matrix for Batter Challenge Intent predictive task. It almost always predicts Not Challenged.</figcaption>
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: The Confusion Matrix for the Batter Challenge Outcome predictive task.</figcaption>
           </figure>
           <p>
             Operating on situational variables alone—without explicit pitch location data—the hybrid model establishes a strong baseline accuracy of 61.59%. Although it produces a higher recall for the Confirmed class, its precision remains consistent among both classes.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Defense Challenge Intent</h3>
+          <p>
+            The third task models the strategic decisions of pitchers and catchers to appeal a called ball. This model suffers from an even more extreme empirical class skew than the batters, tracking a training split composed of 185,907 Unchallenged rows against 4,648 Defensive Challenges (a 97.56% imbalance).
+          </p>
+          <h4>1. The Baseline Empirical Model</h4>
+          <p>
+            When trained on the raw data distribution, the model falls completely into the majority class trap. To cheat the global optimization metrics, the uncalibrated classifier automatically assigns a Not Challenged label to every incoming row. While this yields a misleading global accuracy score of 97.60%, the model achieves a completely useless 0.00 recall rate, failing to identify a single true defensive challenge out of 1,143 holdout test events.
+          </p>
+          <p>
+            Because the background rate is so heavily weighted toward a pitch not being challenged, the uncalibrated model defaults to predicting the majority label for almost every single row. Out of 964 actual challenge events in the holdout test set, the empirical model only successfully predicts 85 of them—yielding an un-acceptablely low recall rate of 9% for the active target class.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 97.60%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.00 | Not Challenged: 1.00</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Challenged: 0.00 | Not Challenged: 0.98</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/DefenseIntentConfusionMatrix.png" alt="Confusion Matrix for Defense Challenge Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: The imbalanced Confusion Matrix for Defense Challenge Intent predictive task. It never predicted Challenged.</figcaption>
+          </figure>
+          <h4>2. The Calibrated Threshold-Balancing Model</h4>
+          <p>
+            Activating the log-odds threshold balancing parameter (use_balancing=True, bias=1.0) shifts the model's focus to localized features. The overall testing accuracy drops to 52.39%, but the algorithm successfully breaks free from the majority-class trap. It correctly identifies 1,136 out of 1,143 true defensive challenges, achieving an elite recall rate of 99% for the minority class.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Calibrated Testing Accuracy:</strong> 52.39%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.99 | Not Challenged: 0.51</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Challenged: 0.05 | Not Challenged: 1.00</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/BalancedDefenseIntentConfusionMatrix.png" alt="Balanced Confusion Matrix for Defense Challenge Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: The balanced Confusion Matrix for Defense Challenge Intent predictive task with bias set to 1.0.</figcaption>
+          </figure>     
+        </div>
+
+        <div class="content-block">
+          <h3>Defense Challenge Outcome</h3>
+          <p>
+            The final task evaluates defensive challenges to predict if a pitcher or catcher's appeal will be overturned. The underlying training distribution shows a slight empirical advantage toward success (1,956 Confirmed vs. 2,676 Overturned rows), reflecting the selective challenge thresholds maintained by fielders.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 60.57%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Confirmed: 0.36 | Overturned: 0.78</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Confirmed: 0.53 | Overturned: 0.63</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/DefenseOutcomeConfusionMatrix.png" alt="Confusion Matrix for Defense Challenge Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: The Confusion Matrix for the Defense Challenge Outcome predictive task.</figcaption>
+          </figure>
+          <p>
+            The defensive outcome model achieves a balanced 60.57% accuracy ceiling. Crucially, the model yields an exceptional 0.78 recall rate for overturned calls, correctly mapping 530 out of 681 successful reviews. This indicates that defensive metadata fields carry a strong predictive signal for identifying high-confidence, structurally sound reviews executed by catchers.
           </p>
         </div>
 
