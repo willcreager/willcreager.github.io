@@ -203,20 +203,47 @@
         <h2>Data Prep</h2>
 
         <div class="content-block">
-          
+          <p>
+            Supervised machine learning with Decision Trees requires a fully labeled historical dataset to calculate the mathematical impurity reductions that guide feature splits. In alignment with the Naive Bayes models, the Decision Trees pipeline is built around the exact same four predictive target variables, split across two distinct categories of labeled outcomes:
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Challenge Intent (“Will pitch get challenged?”) Targets:</strong> Labeled as "Challenged" (1) or "Not Challenged" (0).</li>
+            <li style="padding-left: 30px;"><strong>Challenge Outcome (“Will challenge get overturned?”) Targets:</strong> Labeled as "Overturned" (1) or "Confirmed" (0).</li>
+          </ul>
+          <p>
+            To enforce strict validation integrity and prevent data leakage, the feature matrices and label vectors are programmatically partitioned into a Training Set (80%) and a Testing Set (20%) using a stratified random split. Stratification is a critical step because it ensures that both the training and testing sets mirror the exact proportion of target labels found in the dataset, preventing the model from experiencing class starvation during validation.
+          </p>
+          <h3>Proactive Imbalance Correction via Class Weighting</h3>
+          <p>
+            The exploratory data analysis phase revealed an extreme structural skew in the data, with pitches recorded as Not Challenged more than 95% of the time. During the Naive Bayes modeling, this severe class imbalance forced the empirical model into the majority-class trap—automatically predicting that a pitch would never be challenged to artificially inflate global accuracy at the expense of a 0.00 recall rate.
+          </p>
+          <p>
+            To prevent the Decision Trees from falling into this same optimization trap, the pipeline bypasses unweighted training entirely. Instead, for the two challenge intent tasks, Scikit-Learn's built-in class_weight='balanced' hyperparameter is injected directly into the model initializations. When activated, the tree algorithm calculates an explicit weight multiplier that scales inversely with class frequencies:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$\text{Weight} = \frac{\text{Total Training Samples}}{\text{Number of Unique Classes} \times \text{Samples in Class}}$$
+          </div>
+          <p>
+            This calculated multiplier is applied directly to the Gini and Entropy impurity metrics at every single node split during training. By heavily penalizing misclassifications on the rare Challenged pitches, the algorithm is forced to ignore the sheer background frequency of the data. This shifts the model's focus toward isolating the underlying physical tracking coordinates and high-leverage situational counts that actually drive a player's strategic decision to appeal.
+          </p>
         </div>
         
         <div class="dataset-links" style="margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #0056b3;">
             <p><strong>Dataset Links:</strong></p>
-            
+            <ul>
+                <li>Batter-challengeable Pitches CSV: <a href="data/csvs/MLBData-ABSChallengeablePitches-Batters-FullSeason.csv" target="_blank">MLBData-ABSChallengeablePitches-Batters-FullSeason.csv</a></li>
+                <li>Defense-challengeable Pitches CSV: <a href="data/csvs/MLBData-ABSChallengeablePitches-Defense-FullSeason.csv" target="_blank">MLBData-ABSChallengeablePitches-Defense-FullSeason.csv</a></li>
+            </ul>
         </div>
 
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
-          
+          <img src="images/figures/naivebayes/FinalData-Batters.png" alt="Final batter data used for Decision Trees" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+          <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 3: Snippet of the first five rows and 10 columns of the final, cleaned batter-challengeable pitch data used in the Decision Trees models.</figcaption>
         </figure>
 
         <figure style="margin: var(--spacing-lg) auto; text-align: left;">
-          
+          <img src="images/figures/naivebayes/FinalData-Defense.png" alt="Final defense data used for Decision Trees" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+          <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 4: Snippet of the first five rows and 10 columns of the final, cleaned defense-challengeable pitch data used in the Decision Trees models.</figcaption>
         </figure>
       </div>
     </section>
