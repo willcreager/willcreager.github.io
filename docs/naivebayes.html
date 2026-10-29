@@ -202,7 +202,7 @@
             To force the algorithm to prioritize structural telemetry features (such as spatial deviations and high-leverage ball-strike counts) over the sheer rarity of a challenge, the pipeline was re-executed with log-odds threshold balancing active (use_balancing=True, bias=1.0). By shifting the final decision boundary, the calibrated model completely breaks out of the majority class trap. While the global accuracy score normalizes to 53.32%, the model's ability to flag true events scales exponentially, capturing 869 out of 964 true attempts to reach a recall rate of 0.90 (90%) for the minority class.
           </p>
           <ul>
-            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 53.32%</li>
+            <li style="padding-left: 30px;"><strong>Calibrated Testing Accuracy:</strong> 53.32%</li>
             <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.90 | Not Challenged: 0.52</li>
             <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Challenged: 0.08 | Not Challenged: 0.99</li>
           </ul>
@@ -213,6 +213,25 @@
           <p>
             The stark divergence between these two configurations demonstrates that traditional accuracy is an ineffective metric for analyzing situational challenge strategy. By accepting a lower global accuracy, the calibrated hybrid model provides front-office analysts with a highly sensitive alerting tool. It correctly flags 90% of genuine player-initiated challenges, isolating the exact edge-case environments where hitters choose to pull the trigger on a review.
           </p>       
+        </div>
+
+        <div class="content-block">
+          <h3>Batter Challenge Outcome</h3>
+          <p>
+            The second predictive task isolates pitches that were actively challenged by a hitter and evaluates whether situational metadata can predict if the call will be Overturned or Confirmed. Because this dataset only contains challenged pitches, the class distribution is naturally balanced (1,949 Confirmed vs. 1,862 Overturned rows in the training data). Consequently, this model utilizes standard empirical priors without any threshold adjustments.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 61.59%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Confirmed: 0.68 | Overturned: 0.55</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Confirmed: 0.61 | Overturned: 0.62</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/BatterOutcomeConfusionMatrix.png" alt="Confusion Matrix for Batter Challenge Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: The imbalanced Confusion Matrix for Batter Challenge Intent predictive task. It almost always predicts Not Challenged.</figcaption>
+          </figure>
+          <p>
+            Operating on situational variables alone—without explicit pitch location data—the hybrid model establishes a strong baseline accuracy of 61.59%. Although it produces a higher recall for the Confirmed class, its precision remains consistent among both classes.
+          </p>
         </div>
 
         
