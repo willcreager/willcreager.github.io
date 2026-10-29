@@ -287,7 +287,44 @@
         <h2>Results</h2>
 
         <div class="content-block">
-          
+          <p>
+            To evaluate the predictive performance of the Decision Tree framework, the pipeline was executed across the four predictive tasks. Three structurally distinct tree configurations were trained and tested for each task using stratified 80/20 data partitions to establish a granular performance profile:
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> Optimized for high interpretability; restricted to a maximum depth of 3 layers using Gini Impurity.</li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> Optimized for capturing complex interactions; allowed to scale to a maximum depth of 5 layers using Entropy.</li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> Optimized to prevent overfitting; restricted to a depth of 4 layers and requiring a minimum of 20 samples per terminal leaf node using Gini Impurity.</li>
+          </ul>
+          <br>
+          <h3>Batter Challenge Intent</h3>
+          <p>
+            By proactively deploying the class_weight='balanced' parameter, all three tree configurations successfully bypassed the majority-class trap that heavily degraded the empirical Naive Bayes model. Instead of blindly predicting Not Challenged, the tree splits mapped out clear spatial and situational thresholds.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+          </ul>
+          <br>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/BatterIntentConfusionMatrices.png" alt="Confusion Matrices for Batter Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: Confusion Matrices of the three trees generated for the Batter Intent predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/BatterIntentTree1.png" alt="Tree 1 for Batter Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: Tree 1 (Shallow Gini) generated for the Batter Intent predictive task.</figcaption>
+          </figure>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/BatterIntentTree2.png" alt="Tree 2 for Batter Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: Tree 2 (Deep Entropy) generated for the Batter Intent predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/BatterIntentTree3.png" alt="Tree 3 for Batter Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: Tree 3 (Regularized Gini) generated for the Batter Intent predictive task.</figcaption>
+          </figure>
         </div>
 
         
