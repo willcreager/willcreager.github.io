@@ -93,9 +93,7 @@
             To unify the supervised learning analysis, the Decision Tree models will be evaluated across the exact same four predictive modeling tasks established in the Naive Bayes section. Holding feature sets and labeled target vectors uniform establishes a rigorous comparative framework to analyze how an iterative, non-parametric spatial-splitting model stacks up against a probabilistic, feature-independent baseline.
           </p>
 
-          <h3>
-            The Mathematics of Node Splits: Gini, Entropy, and Information Gain
-          </h3>
+          <h3>The Mathematics of Node Splits: Gini, Entropy, and Information Gain</h3>
 
           <p>
             To construct an optimal tree, the algorithm must determine the exact feature and spatial boundary line to split the data at any given node. This is achieved by evaluating mathematical metrics that quantify the statistical chaos, or impurity, of the target labels within that node. The tree greedily selects the split that minimizes downstream impurity, thereby maximizing the purity of the child nodes.
@@ -136,9 +134,7 @@
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: Plot comparing the Entropy and Gini Impurity values for binary classification. Both metrics reach their maximum possible value at p=0.5, representing chaotic 50/50 split.</figcaption>
           </figure>
 
-          <h3>
-            Step-by-Step Splitting Example (Entropy)
-          </h3>
+          <h3>Step-by-Step Splitting Example (Entropy)</h3>
 
           <p>
             To demonstrate how these metrics function under real-world conditions, consider a parent node containing 100 challenged pitches: 60 are labeled as Overturned (1) and 40 labeled as Confirmed (0).
@@ -160,6 +156,7 @@
             <li style="padding-left: 30px;"><strong>Left Child Node (Condition True):</strong> 50 pitches (45 Overturned, 5 Confirmed)</li>
             <li style="padding-left: 30px;"><strong>Right Child Node (Condition False):</strong> 50 pitches (15 Overturned, 35 Confirmed)</li>
           </ul>
+          <br>
 
           <h4>Step 3: Compute Child Node Impurities</h4>
           <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
@@ -179,6 +176,20 @@
 
           <p>
             Because this spatial boundary line successfully reduces the Entropy by an Information Gain score of 0.296, the algorithm marks this checkpoint as a highly viable candidate node split.
+          </p>
+
+          <h3>The Infinite Tree Phenomenon</h3>
+          <p>
+            It is generally possible to generate an infinite number of unique decision trees from a continuous dataset. Because continuous attributes (such as pitch location coordinates) are composed of floating-point numbers measured out to multiple decimal places, there is a mathematically infinite number of potential splitting thresholds between any two numerical values. Furthermore, a data scientist can alter the tree by tweaking structural hyperparameters:
+          </p>
+          <ul>
+            <li style="padding-left: 30px;">Altering the maximum allowed splitting layer depth (max_depth).</li>
+            <li style="padding-left: 30px;">Adjusting the minimum sample allocation required to form a terminal node (min_samples_leaf).</li>
+            <li style="padding-left: 30px;">Modifying the required split threshold criteria (min_impurity_decrease).</li>
+            <li style="padding-left: 30px;">Switching the absolute baseline impurity function between Gini Impurity and Entropy.</li>
+          </ul>
+          <p>
+            By shifting these parameters even minutely, the algorithm will generate an infinite variety of distinct structural tree geometries from the exact same underlying dataset.
           </p>
             
         </div>
