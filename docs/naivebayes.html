@@ -177,7 +177,42 @@
         <h2>Results</h2>
 
         <div class="content-block">
-          
+          <h3>Batter Challenge Intent</h3>
+          <p>
+            The first predictive modeling task evaluates whether the unified hybrid ensemble can accurately predict a hitter's decision to initiate an ABS challenge. Because the baseline dataset contains a heavy class imbalance (81,440 Unchallenged vs. 3,800 Challenged pitches in the training set), this task provides an ideal benchmark to contrast a native empirical probability model against the calibrated log-odds threshold-balancing architecture.
+          </p>
+          <h4>1. The Baseline Empirical Model</h4>
+          <p>
+            When trained naturally on the skewed historical class distributions, the model registers a misleadingly high global testing accuracy of 95.45%. However, an evaluation of the confusion matrix and classification report reveals that this high score is a mathematical illusion caused by the majority class trap.
+          </p>
+          <p>
+            Because the background rate is so heavily weighted toward a pitch not being challenged, the uncalibrated model defaults to predicting the majority label for almost every single row. Out of 964 actual challenge events in the holdout test set, the empirical model only successfully predicts 85 of them—yielding an un-acceptablely low recall rate of 9% for the active target class.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 95.45%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.09 | Not Challenged: 1.00</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Challenged: 0.48 | Not Challenged: 0.96</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/BatterIntentConfusionMatrix.png" alt="Confusion Matrix for Batter Challenge Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 3: The imbalanced Confusion Matrix for Batter Challenge Intent predictive task. It almost always predicts Not Challenged.</figcaption>
+          </figure>
+          <h4>2. The Calibrated Threshold-Balancing Model</h4>
+          <p>
+            To force the algorithm to prioritize structural telemetry features (such as spatial deviations and high-leverage ball-strike counts) over the sheer rarity of a challenge, the pipeline was re-executed with log-odds threshold balancing active (use_balancing=True, bias=1.0). By shifting the final decision boundary, the calibrated model completely breaks out of the majority class trap. While the global accuracy score normalizes to 53.32%, the model's ability to flag true events scales exponentially, capturing 869 out of 964 true attempts to reach a recall rate of 0.90 (90%) for the minority class.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 53.32%</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.90 | Not Challenged: 0.52</li>
+            <li style="padding-left: 30px;"><strong>Class-Specific Precision:</strong> Challenged: 0.08 | Not Challenged: 0.99</li>
+          </ul>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/BalancedBatterIntentConfusionMatrix.png" alt="Balanced Confusion Matrix for Batter Challenge Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 4: The balanced Confusion Matrix for Batter Challenge Intent predictive task with bias set to 1.0. It identifies almost all Challenged pitches now, but sacrifices overall accuracy.</figcaption>
+          </figure>
+          <p>
+            The stark divergence between these two configurations demonstrates that traditional accuracy is an ineffective metric for analyzing situational challenge strategy. By accepting a lower global accuracy, the calibrated hybrid model provides front-office analysts with a highly sensitive alerting tool. It correctly flags 90% of genuine player-initiated challenges, isolating the exact edge-case environments where hitters choose to pull the trigger on a review.
+          </p>       
         </div>
 
         
