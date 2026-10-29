@@ -134,7 +134,52 @@
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/decisiontrees/DTOverview_Diagram2.png" alt="Entropy vs Gini Impurity Binary Comparison" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: Plot comparing the Entropy and Gini Impurity values for binary classification. Both metrics reach their maximum possible value at p=0.5, representing chaotic 50/50 split.</figcaption>
-          </figure>          
+          </figure>
+
+          <h3>
+            Step-by-Step Splitting Example (Entropy)
+          </h3>
+
+          <p>
+            To demonstrate how these metrics function under real-world conditions, consider a parent node containing 100 challenged pitches: 60 are labeled as Overturned (1) and 40 labeled as Confirmed (0).
+          </p>
+
+          <h4>Step 1: Calculate Parent Node Entropy</h4>
+          <p>
+            Before any split is executed, the baseline uncertainty of the parent node is computed using the class proportions (p1 = 0.60 and p0 = 0.40):
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Entropy(Parent) = \( -(0.60 \log_2(0.60) + 0.40 \log_2(0.40)) = 0.971 \)$$
+          </div>
+
+          <h4>Step 2: Evaluate a Candidate Feature Split</h4>
+          <p>
+            Suppose the model tests a split on the current inning: inning <= 5. This split divides the 100 pitches into two child nodes:
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Left Child Node (Condition True):</strong> 50 pitches (45 Overturned, 5 Confirmed)</li>
+            <li style="padding-left: 30px;"><strong>Right Child Node (Condition False):</strong> 50 pitches (15 Overturned, 35 Confirmed)</li>
+          </ul>
+
+          <h4>Step 3: Compute Child Node Impurities</h4>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            Entropy(Left Child) = $$-(0.9 \log_2(0.9) + 0.1 \log_2(0.1)) = 0.469$$
+          </div>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            Entropy(Right Child) = $$-(0.3 \log_2(0.3) + 0.7 \log_2(0.7)) = 0.881$$
+          </div>
+
+          <h4>Step 4: Compute Final Information Gain</h4>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Weighted Child Entropy = (0.5 \times 0.469) + (0.5 \times 0.881) = 0.675$$
+          </div>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Information Gain = Parent Entropy - Weighted Child Entropy = 0.971 - 0.675 = 0.296$$
+          </div>
+
+          <p>
+            Because this spatial boundary line successfully reduces the Entropy by an Information Gain score of 0.296, the algorithm marks this checkpoint as a highly viable candidate node split.
+          </p>
             
         </div>
 
