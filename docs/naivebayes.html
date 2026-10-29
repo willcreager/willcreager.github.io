@@ -299,7 +299,12 @@
         <h2>Conclusions</h2>
 
         <div class="content-block">
-          
+          <p>
+            The implementation of the Unified Hybrid Naive Bayes model across four distinct predictive tasks yields critical insights into the strategic usage of the ABS Challenge System. Most notably, the experimental results demonstrate that accounting for extreme class imbalances is a mandatory prerequisite for any machine learning pipeline attempting to model decisions regarding whether to challenge. Because players execute challenges on less than 5% of challengeable pitches, uncalibrated empirical models inevitably fall into a majority-class trap—maximizing global accuracy by essentially assuming a challenge will never occur. By shifting the final decision boundary using a custom log-odds threshold-balancing calibration, this research proves that front offices can successfully break out of this trap. This threshold shift forces the algorithm to prioritize localized, interactive spatial margins and high-leverage count configurations, successfully scaling the target class recall rate to 0.90 for batters and 0.99 for defensive units.
+          </p>
+          <p>
+            Furthermore, the predictive performance achieved by the challenge outcome models highlights the precise strengths and boundaries of using situational metadata in isolation. Stabilizing at a validation ceiling of 61.59% accuracy for batter reviews and 60.57% accuracy for defense reviews, both outcome classifiers successfully confirm that contextual game states carry a statistically significant predictive signal. These scores comfortably outperform a baseline random guess of 50%, indicating that situational context influences the probability of a successful challenge. However, stabilizing near a 60% threshold also proves that situational metadata alone is not reliable enough for making absolute, high-confidence predictions. To improve upon this ceiling and build highly dependable models, these contextual features must eventually be paired alongside additional data.
+          </p>     
         </div>
 
       </div>
