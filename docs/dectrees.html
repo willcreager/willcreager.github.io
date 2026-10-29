@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://polyfill.io"></script>
+  <script id="MathJax-script" async src="https://jsdelivr.net"></script>
 </head>
 <body>
 
@@ -71,6 +73,61 @@
         <h2>Decision Trees Overview</h2>
 
         <div class="content-block">
+          <p>
+            Decision Trees represent a powerful class of supervised non-parametric machine learning models used for both classification and regression tasks by recursively partitioning a dataset into increasingly homogeneous, or pure, subsets based on feature thresholds. Unlike probabilistic models such as Naive Bayes, a Decision Tree creates an explicit structure where internal nodes represent tests on specific independent attributes, branches denote the outcomes of those tests, and terminal leaf nodes deliver the final predicted class label. Within machine learning pipelines, this algorithmic approach provides a major structural advantage: it generates a highly transparent, readable sequence of logical checkpoints, as shown in Figure 1B below. This allows stakeholders to easily interpret exactly why a model predicts a specific outcome.
+          </p>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DTOverview_Diagram1.png" alt="Example Feature Splits and Decision Tree" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Conceptual diagrams showing feature splits and the resulting Decision Tree.</figcaption>
+          </figure>
+
+          <p>
+            To unify the supervised learning analysis, the Decision Tree models will be evaluated across the exact same four predictive modeling tasks established in the Naive Bayes section. Holding feature sets and labeled target vectors uniform establishes a rigorous comparative framework to analyze how an iterative, non-parametric spatial-splitting model stacks up against a probabilistic, feature-independent baseline.
+          </p>
+
+          <h3>
+            The Mathematics of Node Splits: Gini, Entropy, and Information Gain
+          </h3>
+
+          <p>
+            To construct an optimal tree, the algorithm must determine the exact feature and spatial boundary line to split the data at any given node. This is achieved by evaluating mathematical metrics that quantify the statistical chaos, or impurity, of the target labels within that node. The tree greedily selects the split that minimizes downstream impurity, thereby maximizing the purity of the child nodes.
+          </p>
+
+          <h4>1. Gini Impurity</h4>
+
+          <p>
+            Gini Impurity measures the probability of a random element from a node being incorrectly labeled if it were randomly classified according to the label distribution in that subset. It spans a continuous range from 0.0 (a pure node, containing only one class) to 0.5 (a balanced node, perfectly split between two classes). The formula for Gini Impurity at node t is expressed as:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Gini(t) = 1 - \sum_{i=1}^{c} (p_i)^2$$
+          </div>
+          <p class="card-text small text-muted">
+            Where \( p_i \) represents the proportion of samples belonging to class i at t.
+          </p>
+
+          <h4>2. Entropy</h4>
+
+          <p>
+            Entropy measures the total level of class randomness at a specific node. Like Gini Impurity, a perfectly pure node containing only one class receives an Entropy score of 0.0. However, the maximum Entropy score, representing a node evenly split between two classes, is 1.0. The formula for Entropy at node t is expressed as:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Entropy(t) = -\sum_{i=1}^{c} p_i \log_2(p_i)$$
+          </div>
+
+          <h4>3. Information Gain</h4>
+
+          <p>
+            Information Gain is the operational metric that determines which split is executed. It calculates the net reduction in statistical impurity achieved by partitioning a parent node into smaller child branches. The model tests every possible split threshold across all features and selects the single boundary line that yields the maximum Information Gain. The mathematical formula is defined as:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$Gain(A) = \text{Impurity}(\text{Parent}) - \sum_{v \in \text{Children}} \frac{|N_{\text{child}}|}{|N_{\text{parent}}|} \times \text{Impurity}(\text{Child})$$
+          </div>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DTOverview_Diagram2.png" alt="Entropy vs Gini Impurity Binary Comparison" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: Plot comparing the Entropy and Gini Impurity values for binary classification. Both metrics reach their maximum possible value at p=0.5, representing chaotic 50/50 split.</figcaption>
+          </figure>          
             
         </div>
 
