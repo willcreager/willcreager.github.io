@@ -356,6 +356,65 @@
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 12: Tree 3 (Regularized Gini) generated for the Batter Outcome predictive task.</figcaption>
           </figure>
           <br>
+          <h3>Defense Challenge Intent</h3>
+          <p>
+            Predicting catcher and pitcher challenges represents the steepest data skew in these four tasks (97.56% Not Challenged rows). Proactive balancing forced the splitting nodes to focus on characteristics driving the minority class.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+          </ul>
+          <br>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseIntentConfusionMatrices.png" alt="Confusion Matrices for Defense Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 13: Confusion Matrices of the three trees generated for the Defense Intent predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseIntentTree1.png" alt="Tree 1 for Defense Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 14: Tree 1 (Shallow Gini) generated for the Defense Intent predictive task.</figcaption>
+          </figure>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseIntentTree2.png" alt="Tree 2 for Defense Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 15: Tree 2 (Deep Entropy) generated for the Defense Intent predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseIntentTree3.png" alt="Tree 3 for Defense Intent predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 16: Tree 3 (Regularized Gini) generated for the Defense Intent predictive task.</figcaption>
+          </figure>
+          <br>
+          <h3>Defense Challenge Outcome</h3>
+          <p>
+            The final task evaluates whether a catcher or pitcher's challenge will successfully overturn a called ball into a strike. The underlying data features a slight natural advantage toward success, tracking a baseline split of 42.2% Confirmed vs. 57.8% Overturned in training.
+          </p>
+          <ul>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+          </ul>
+          <br>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseOutcomeConfusionMatrices.png" alt="Confusion Matrices for Defense Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 17: Confusion Matrices of the three trees generated for the Defense Outcome predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseOutcomeTree1.png" alt="Tree 1 for Defense Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 18: Tree 1 (Shallow Gini) generated for the Defense Outcome predictive task.</figcaption>
+          </figure>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseOutcomeTree2.png" alt="Tree 2 for Defense Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 19: Tree 2 (Deep Entropy) generated for the Defense Outcome predictive task.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/decisiontrees/DefenseOutcomeTree3.png" alt="Tree 3 for Defense Outcome predictive task" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 20: Tree 3 (Regularized Gini) generated for the Defense Outcome predictive task.</figcaption>
+          </figure>
         </div>
 
         
