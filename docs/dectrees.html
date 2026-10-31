@@ -301,9 +301,9 @@
             By proactively deploying the class_weight='balanced' parameter, all three tree configurations successfully bypassed the majority-class trap that heavily degraded the empirical Naive Bayes model. Instead of blindly predicting Not Challenged, the tree splits mapped out clear spatial and situational thresholds.
           </p>
           <ul>
-            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> Achieved an overall accuracy of 0.657, and the strongest recall (0.83) for the Challenged minority class, identifying 794 of the 953 Challenged pitches in testing.</li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> Achieved an overall accuracy of 0.751, with strong recalls for both the Challenged (0.82) and Not Challenged (0.75) classes.</li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> Achieved an overall accuracy of 0.797, strongest of the three trees generated for this task. It correctly identified the most Not Challenged pitches (16316), but struggled with identifying challenges compared to the other trees, with a Challenged recall of 0.71.</li>
           </ul>
           <br>
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
@@ -331,9 +331,9 @@
             This task models whether an active batter challenge will result in an Overturned ball or a Confirmed strike. Because this data subset only tracks pitches where a challenge was actively executed, the classes are naturally balanced in the training pool.
           </p>
           <ul>
-            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> Achieved an overall accuracy of 0.615, strongest of the three trees generated for this task.</li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> Achieved an overall accuracy of 0.603. It correctly identified the most Confirmed challenges (349), but with a weak recall of 0.49 for Overturned challenges.</li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> Achieved an overall accuracy of 0.609. It produced the most balanced results of the three trees, with a recall of 0.60 for the Confirmed class and 0.62 for the Overturned class</li>
           </ul>
           <br>
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
@@ -361,9 +361,9 @@
             Predicting catcher and pitcher challenges represents the steepest data skew in these four tasks (97.56% Not Challenged rows). Proactive balancing forced the splitting nodes to focus on characteristics driving the minority class.
           </p>
           <ul>
-            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> Achieved an overall accuracy of 0.713, by far the lowest of these three trees. While it preformed well with the minority class (0.95 Challenged recall score), its 0.71 Not Challenged recall was the lowest of the three.</li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> Achieved an overall accuracy of 0.831. It correctly identified 1117 of the 1158 Challenged pitches, most of the three trees.</li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> Achieved an overall accuracy of 0.852, strongest of the three trees generated for this task, with strong recall scores for both the Challenged (0.94) and Not Challenged (0.85) classes.</li>
           </ul>
           <br>
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
@@ -391,9 +391,9 @@
             The final task evaluates whether a catcher or pitcher's challenge will successfully overturn a called ball into a strike. The underlying data features a slight natural advantage toward success, tracking a baseline split of 42.2% Confirmed vs. 57.8% Overturned in training.
           </p>
           <ul>
-            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> </li>
-            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> </li>
+            <li style="padding-left: 30px;"><strong>Tree 1 (Shallow Gini):</strong> Achieved an overall accuracy of 0.608. While it correctly predicted 571 of the 672 Overturned challenges, it struggled badly with Confirmed challenges (0.28 recall score).</li>
+            <li style="padding-left: 30px;"><strong>Tree 2 (Deep Entropy):</strong> Achieved an overall accuracy of 0.616, strongest of the three trees generated for this task. Like the other two trees, it's heavily skewed towards predicting Overturned.</li>
+            <li style="padding-left: 30px;"><strong>Tree 3 (Regularized Gini):</strong> Achieved an overall accuracy of 0.613, correctly predicting just one less Confirmed challenge and three less Overturned challenges than Tree 2.</li>
           </ul>
           <br>
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
