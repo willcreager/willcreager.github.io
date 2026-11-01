@@ -10,6 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -82,9 +91,33 @@
           <h3>The Mathematical Variants of Naive Bayes</h3>
           <ul>
             <li style="padding-left: 30px;"><strong>Gaussian Naive Bayes:</strong> Tailored strictly for continuous numeric variables. It assumes that the continuous features associated with each class follow a Gaussian bell curve distribution.</li>
+            <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+              $$P(X_i \mid y) = \frac{1}{\sqrt{2\pi\sigma_y^2}} \exp\left(-\frac{(X_i - \mu_y)^2}{2\sigma_y^2}\right)$$
+            </div>
+            <p class="card-text small text-muted">
+              Where \(\mu_y\) represents the feature mean and \(\sigma_y^2\) represents the feature variance calculated for class \(y\).
+            </p>
             <li style="padding-left: 30px;"><strong>Multinomial Naive Bayes:</strong> Designed for discrete event count variables. It models feature vectors where features represent counts or frequencies of occurrences, such as the number of times a word appears in an email.</li>
+            <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+              $$P(X_i \mid y) = \frac{N_{yi} + \alpha}{N_y + \alpha n}$$
+            </div>
+            <p class="card-text small text-muted">
+              Where \(N_{yi}\) is the total count of feature \(i\) in class \(y\), \(N_y\) is the total count of all features in class \(y\), \(\alpha\) is the Laplace smoothing parameter, and \(n\) is the total number of features.
+            </p>
             <li style="padding-left: 30px;"><strong>Bernoulli Naive Bayes:</strong> Engineered for binary or boolean independent features. It evaluates the simple presence or absence of a specific characteristic.</li>
+            <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+              $$P(X_i \mid y) = p_{yi}^{X_i} (1 - p_{yi})^{(1 - X_i)}$$
+            </div>
+            <p class="card-text small text-muted">
+              Where \(p_{yi}\) represents the baseline probability that category \(i\) appears within class \(y\), and \(X_i\) is either 0 or 1.
+            </p>
             <li style="padding-left: 30px;"><strong>Categorical Naive Bayes:</strong> Optimized for discrete categorical features with fixed ranges. It assumes each feature has its own categorical distribution.</li>
+            <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+              $$P(X_i = t \mid y) = \frac{N_{yit} + \alpha}{N_y + \alpha n_i}$$
+            </div>
+            <p class="card-text small text-muted">
+              Where \(N_{yit}\) tracks how many times feature \(i\) took on category value \(t\) within target class \(y\), and \(n_i\) is the total number of unique categories available for feature \(i\).
+            </p>
           </ul>
           
         </div>
