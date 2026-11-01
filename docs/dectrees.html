@@ -215,7 +215,7 @@
           </p>
           <h3>Proactive Imbalance Correction via Class Weighting</h3>
           <p>
-            The exploratory data analysis phase revealed an extreme structural skew in the data, with pitches recorded as Not Challenged more than 95% of the time. During the Naive Bayes modeling, this severe class imbalance forced the empirical model into the majority class trap—automatically predicting that a pitch would never be challenged to artificially inflate global accuracy at the expense of a 0.00 recall rate.
+            The exploratory data analysis phase revealed an extreme structural skew in the data, with pitches recorded as Not Challenged more than 95% of the time. During the Naive Bayes modeling, this severe class imbalance forced the empirical model into the majority class trap—automatically predicting that a pitch would never be challenged to artificially inflate global accuracy at the expense of a 0.00 recall score for the minority class.
           </p>
           <p>
             To prevent the Decision Trees from falling into this same optimization trap, the pipeline bypasses unweighted training entirely. Instead, for the two challenge intent tasks, Scikit-Learn's built-in class_weight='balanced' hyperparameter is injected directly into the model initializations. When activated, the tree algorithm calculates an explicit weight multiplier that scales inversely with class frequencies:
