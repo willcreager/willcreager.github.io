@@ -257,9 +257,6 @@
           <p>
             When trained on the raw data distribution, the model falls completely into the majority class trap. To cheat the global optimization metrics, the uncalibrated classifier automatically assigns a Not Challenged label to every incoming row. While this yields a misleading global accuracy score of 97.60%, the model achieves a completely useless 0.00 recall rate, failing to identify a single true defensive challenge out of 1,143 holdout test events.
           </p>
-          <p>
-            Because the background rate is so heavily weighted toward a pitch not being challenged, the uncalibrated model defaults to predicting the majority label for almost every single row. Out of 964 actual challenge events in the holdout test set, the empirical model only successfully predicts 85 of them—yielding an un-acceptablely low recall rate of 9% for the active target class.
-          </p>
           <ul>
             <li style="padding-left: 30px;"><strong>Empirical Testing Accuracy:</strong> 97.60%</li>
             <li style="padding-left: 30px;"><strong>Class-Specific Recall:</strong> Challenged: 0.00 | Not Challenged: 1.00</li>
