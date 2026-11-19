@@ -99,6 +99,23 @@
           <p>
             To determine the optimal line of best fit, Ordinary Least Squares (OLS) minimizes the vertical distances—known as residuals (\(e_i = y_i - \hat{y}_i\))—between the actual observed data points and the predicted regression line. Specifically, the algorithm minimizes the Residual Sum of Squares (RSS) across all training observations, as illustrated in Figure 1:
           </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Residual Sum of Squares (RSS) Objective</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$\text{RSS} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                Squaring each residual penalizes large prediction errors heavily and guarantees a single global minimum for the best-fit parameters.
+              </p>
+            </div>
+          </div>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/RegressionOverview_Diagram1.png" alt="Simple Linear Regression Best-Fit Line and Residual Errors" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Illustration of Simple Linear Regression fitting a continuous line through observed data points by minimizing the squared vertical residual errors (\(e_i = y_i - \hat{y}_i\)).</figcaption>
+          </figure>
           
         </div>
 
