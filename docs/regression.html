@@ -303,6 +303,11 @@
             </li>
           </ul>
 
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/LinearReg_ChallengeRate.png" alt="Linear Regression Predicted vs Actual Batter ABS Challenge Rate" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 6: Holdout test set Predicted vs. Actual Batter ABS Challenge Rate (\(R^2 = 0.0456\), \(\text{RMSE} = 0.0261\)) using <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>.</figcaption>
+          </figure>
+
           <h4>B. Predicting Batter ABS Overturn Rate</h4>
 
           <p>
@@ -316,6 +321,11 @@
               <strong>OPS (<code>ops</code>, \(\beta = -0.1340\)) &amp; Plate Appearances (<code>plateAppearances</code>, \(\beta = +0.000085\)):</strong> Overall OPS exhibits a slight negative slope once walk rate is controlled, while total plate appearances has virtually zero effect. 
             </li>
           </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/LinearReg_ChallengeRate.png" alt="Linear Regression Predicted vs Actual Batter ABS Overturn Rate" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 7: Holdout test set Predicted vs. Actual Batter ABS Overturn Rate (\(R^2 = 0.0143\), \(\text{RMSE} = 0.1789\)) using <code>plateAppearances</code>, <code>ops</code>, and <code>walkRate</code>.</figcaption>
+          </figure>
 
           <p>
             Overall, season-level batting statistics explain less than 5% of the variance in challenge rates and under 2% of the variance in overturn rates.
