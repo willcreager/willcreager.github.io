@@ -338,8 +338,25 @@
 
         <div class="content-block">
           <p>
-            
+            For each of the four pitch-level classification tasks, the L2 regularization parameter \(C \in \{0.001, 0.01, 0.1, 1.0, 10.0\}\) was tuned via 5-fold stratified cross-validation inside the training set before evaluating once on the untouched holdout test set. Because all predictors were standardized to unit variance prior to fitting, each learned coefficient represents the change in log-odds per +1 standard deviation increase in that feature.
           </p>
+
+          <h4>Task 1: Batter Challenge Intent (Balanced, 14 Features)</h4>
+
+          <ul>
+            <li>
+              <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.01\) (\(\text{CV Macro F1} = 0.5184\)), yielding 74.15% holdout test accuracy with 0.69 recall on <code>Challenged</code> (653 / 953) and 0.74 recall on <code>Not Challenged</code> (15,150 / 20,358).
+            </li>
+            <li>
+              <strong>Odds Ratio Interpretation:</strong> Because Scikit-Learn orders classes alphabetically (<code>0 = Challenged</code>, <code>1 = Not Challenged</code>), <code>prePitchStrikes</code> has a log-odds coefficient of \(-0.6965\) (\(\text{Odds Ratio} = e^{-0.6965} = \mathbf{0.498}\)). A one-standard-deviation increase in strikes cuts the odds of <em>Not Challenging</em> in half—meaning the odds of a batter initiating a challenge roughly double (\(1 / 0.498 = 2.01\times\)) as the strike count climbs. Similarly, higher <code>inning</code> (\(\text{OR} = 0.692\)) and lower bottom-edge zone margin <code>plateTimeY_BotDiff</code> (\(\text{OR} = 1.337\) for not challenging) strongly drive appeal decisions.
+            </li>
+          </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/BatterIntentConfusionMatrix.png" alt="Logistic Regression Confusion Matrix for Batter Challenge Intent" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: Holdout test confusion matrix for balanced Logistic Regression on Batter Challenge Intent (Accuracy = 74.15%).</figcaption>
+          </figure>
+
         </div>
         
       </div>
