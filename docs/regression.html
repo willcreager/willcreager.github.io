@@ -10,6 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -64,6 +73,154 @@
 
   <!-- Main Content -->
   <main>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <h2>Regression Overview</h2>
+
+        <div class="content-block">
+          <p>
+            Regression is a foundational family of supervised machine learning algorithms designed to model the mathematical relationship between independent input features (\(X\)) and a target outcome variable (\(Y\)). Depending on whether the target variable is a continuous numerical measurement or a discrete categorical label, predictive modeling pipelines utilize either Linear Regression or Logistic Regression. Within ABS analytics, pairing both techniques enables a two-tiered investigation: evaluating whether season-long hitting metrics explain continuous player challenge rates, while simultaneously predicting discrete pitch-by-pitch review decisions and officiating overturns.
+          </p>
+
+          <h3>Linear Regression</h3>
+
+          <p>
+            Linear Regression predicts a continuous numerical target variable by fitting a straight hyperplane through the feature space. For a dataset with multiple independent features, the predicted continuous value \(\hat{y}\) is expressed as a linear weighted sum:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n$$
+          </div>
+          <p class="card-text small text-muted">
+            Where \(\beta_0\) is the y-intercept, \(x_1, \dots, x_n\) represent input features, and \(\beta_1, \dots, \beta_n\) denote the coefficients quantifying how much \(\hat{y}\) changes per one-unit increase in each feature (holding all other features constant).
+          </p>
+
+          <p>
+            To determine the optimal line of best fit, Ordinary Least Squares (OLS) minimizes the vertical distances—known as residuals (\(e_i = y_i - \hat{y}_i\))—between the actual observed data points and the predicted regression line. Specifically, the algorithm minimizes the Residual Sum of Squares (RSS) across all training observations, as illustrated in Figure 1:
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Residual Sum of Squares (RSS) Objective</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$\text{RSS} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                Squaring each residual penalizes large prediction errors heavily and guarantees a single global minimum for the best-fit parameters.
+              </p>
+            </div>
+          </div>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/RegressionOverview_Diagram1.png" alt="Simple Linear Regression Best-Fit Line and Residual Errors" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Illustration of Simple Linear Regression fitting a continuous line through observed data points by minimizing the squared vertical residual errors (\(e_i = y_i - \hat{y}_i\)).</figcaption>
+          </figure>
+
+          <h3>Logistic Regression</h3>
+
+          <p>
+            Logistic Regression is a supervised classification algorithm used when the target variable is binary (such as <code>Challenged</code> vs. <code>Not Challenged</code> or <code>Overturned</code> vs. <code>Confirmed</code>). Rather than predicting an unbounded continuous number, Logistic Regression first computes a linear log-odds score \(z\) and passes it through the non-linear Sigmoid function. This curve squashes any real-valued input into a bounded probability between \(0\) and \(1\), as shown in Figure 2:
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Logistic Sigmoid Function</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$P(Y = 1 \mid X) = \sigma(z) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}}$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                By default, observations with a predicted probability \(P(Y = 1 \mid X) \geq 0.5\) (corresponding to \(z \geq 0\)) are assigned to the positive class, while values below \(0.5\) are assigned to the negative class.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Instead of minimizing squared residuals, Logistic Regression optimizes its weights using Maximum Likelihood Estimation (MLE). Furthermore, exponentiating any learned feature coefficient (\(e^{\beta_j}\)) yields an interpretable Odds Ratio, indicating how the odds of the positive outcome multiply for each unit increase in that feature.
+          </p>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/RegressionOverview_Diagram2.png" alt="Logistic Regression Sigmoid Curve" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: The Logistic Sigmoid curve mapping continuous linear log-odds scores (\(z\)) into bounded class probabilities between \(0\) and \(1\) around the \(P = 0.5\) decision threshold.</figcaption>
+          </figure>
+
+          <h3>Application to the ABS Challenge Research Project</h3>
+
+          <p>
+            Within this study, regression modeling is applied across both season-level player aggregates and pitch-by-pitch tracking telemetry:
+          </p>
+          <ul>
+            <li>
+              <strong>Linear Regression (Season-Level Hitter Rates):</strong> Evaluates all combinations of five season-level batting metrics (<code>plateAppearances</code>, <code>ops</code>, <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>) using 5-fold cross-validation to determine whether general offensive production, increased playing time, and plate discipline predict a batter's cumulative ABS Challenge Rate or ABS Overturn Rate.
+            </li>
+            <li>
+              <strong>Logistic Regression (Pitch-by-Pitch Classification):</strong> Evaluates the exact same four binary classification tasks established in earlier models—Batter Challenge Intent, Batter Challenge Outcome, Defense Challenge Intent, and Defense Challenge Outcome—enabling a direct comparison against the feature-independent Hybrid Naive Bayes models.
+            </li>
+          </ul>
+       
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Data Prep -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Data Prep</h2>
+
+        <div class="content-block">
+          <p>
+            Because Linear Regression and Logistic Regression solve fundamentally different mathematical objectives, separate data preparation workflows were constructed for them. Across both workflows, all datasets were partitioned into strictly disjoint Training (80%) and Holdout Testing (20%) splits prior to feature selection or hyperparameter tuning to eliminate data leakage.
+          </p>
+
+          <h3>1. Linear Regression Data Preparation (Season-Level Hitter Aggregates)</h3>
+
+          <p>
+            To evaluate whether cumulative offensive performance explains a batter's challenge tendencies, season-level ABS situational splits were inner-joined with 2026 regular season batting statistics using their unique player ids. Three normalized rate metrics were engineered to capture plate discipline and at-bat length independent of total playing time:
+          </p>
+          <ul>
+            <li>
+              <strong>Strikeout Rate (<code>strikeOutRate</code>):</strong> Computed as total strikeouts divided by total plate appearances (<code>strikeOuts / plateAppearances</code>).
+            </li>
+            <li>
+              <strong>Walk Rate (<code>walkRate</code>):</strong> Computed as total walks divided by total plate appearances (<code>baseOnBalls / plateAppearances</code>).
+            </li>
+            <li>
+              <strong>Pitches Per Plate Appearance (<code>pitchesPerPA</code>):</strong> Computed as total pitches seen divided by total plate appearances (<code>numberOfPitches / plateAppearances</code>).
+            </li>
+          </ul>
+
+          <p>
+            To eliminate small-sample volatility in continuous target rates, hitters with fewer than 100 plate appearances and rows with missing target values were filtered out. This yielded a clean dataset of 425 qualified hitters (340 training rows and 85 testing rows) across five continuous candidate predictors: <code>plateAppearances</code>, <code>ops</code>, <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>.
+          </p>
+
+          <p>Todo: Add screenshot of final dataset as Figure 3</p>
+
+          <h3>2. Logistic Regression Data Preparation (Pitch-by-Pitch Classification)</h3>
+
+          <p>
+            For binary classification, the pitch-by-pitch batter and defensive datasets were prepared using the same supervised target labels established in prior modules: <code>Challenged</code> (1) vs. <code>Not Challenged</code> (0) for challenge intent tasks, and <code>Overturned</code> (1) vs. <code>Confirmed</code> (0) for challenge outcome tasks.
+          </p>
+          <ul>
+            <li>
+              <strong>Data Leakage Prevention on Outcome Models:</strong> While all 14 engineered spatial and situational features were retained for predicting challenge intent, the three strike-zone coordinate margins (<code>plateTimeX</code>, <code>plateTimeY_topDiff</code>, and <code>plateTimeY_BotDiff</code>) were strictly excluded from the outcome models. Because Hawk-Eye arbitration relies directly on those coordinates, removing them ensures the models evaluate whether situational context alone predicts overturn likelihood.
+            </li>
+            <li>
+              <strong>Feature Standardization (<code>StandardScaler</code>):</strong> For Logistic Regression, features measured on vastly different numerical scales (such as pitch velocity in miles per hour versus binary baserunner flags) receive uneven regularization penalties. Therefore, all numeric features were standardized to zero mean and unit variance inside a Scikit-Learn <code>Pipeline</code> so scaling parameters were learned strictly within each cross-validation training fold.
+            </li>
+            <li>
+              <strong>Class Imbalance Correction:</strong> To prevent the heavily skewed challenge intent models (~95.6% unchallenged for batters and ~97.6% unchallenged for defense) from collapsing into majority-class predictions, <code>class_weight="balanced"</code> was applied during training, while the naturally balanced outcome models used unweighted empirical distributions.
+            </li>
+          </ul>
+
+          <p>Todo: Add screenshot of dataset before standardization as Figure 4</p>
+
+          <p>Todo: Add links to download CSV files from GitHub</p>
+
+        </div>
+        
+      </div>
+    </section>
 
 
   </main>
