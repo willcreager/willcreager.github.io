@@ -163,6 +163,44 @@
       </div>
     </section>
 
+    <!-- Data Prep -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Data Prep</h2>
+
+        <div class="content-block">
+          <p>
+            Because Linear Regression and Logistic Regression solve fundamentally different mathematical objectives, separate data preparation workflows were constructed for them. Across both workflows, all datasets were partitioned into strictly disjoint Training (80%) and Holdout Testing (20%) splits prior to feature selection or hyperparameter tuning to eliminate data leakage.
+          </p>
+
+          <h3>1. Linear Regression Data Preparation (Season-Level Hitter Aggregates)</h3>
+
+          <p>
+            To evaluate whether cumulative offensive performance explains a batter's challenge tendencies, season-level ABS situational splits were inner-joined with 2026 regular season batting statistics using their unique player ids. Three normalized rate metrics were engineered to capture plate discipline and at-bat length independent of total playing time:
+          </p>
+          <ul>
+            <li>
+              <strong>Strikeout Rate (<code>strikeOutRate</code>):</strong> Computed as total strikeouts divided by total plate appearances (<code>strikeOuts / plateAppearances</code>).
+            </li>
+            <li>
+              <strong>Walk Rate (<code>walkRate</code>):</strong> Computed as total walks divided by total plate appearances (<code>baseOnBalls / plateAppearances</code>).
+            </li>
+            <li>
+              <strong>Pitches Per Plate Appearance (<code>pitchesPerPA</code>):</strong> Computed as total pitches seen divided by total plate appearances (<code>numberOfPitches / plateAppearances</code>).
+            </li>
+          </ul>
+
+          <p>
+            To eliminate small-sample volatility in continuous target rates, hitters with fewer than 100 plate appearances and rows with missing target values were filtered out. This yielded a clean dataset of 425 qualified hitters (340 training rows and 85 testing rows) across five continuous candidate predictors: <code>plateAppearances</code>, <code>ops</code>, <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>.
+          </p>
+
+          <p>Todo: Add screenshot of final dataset as Figure 3</p>
+
+        </div>
+        
+      </div>
+    </section>
+
 
   </main>
 
