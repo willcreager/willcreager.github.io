@@ -283,7 +283,7 @@
 
         <div class="content-block">
           <p>
-            All 31 possible subsets of the five candidate batting metrics were evaluated using <strong>5-fold cross-validation</strong> strictly within the 340-player training split before evaluating the single top-ranked subset once on the untouched 85-player holdout test set.
+            All 31 possible subsets of the five candidate batting metrics were evaluated using 5-fold cross-validation strictly within the 340-player training split before evaluating the single top-ranked subset once on the untouched 85-player holdout test set.
           </p>
 
           <h4>A. Predicting Batter ABS Challenge Rate</h4>
@@ -313,9 +313,13 @@
               <strong>Walk Rate (<code>walkRate</code>, \(\beta = +0.4654\)):</strong> Every 10 percentage-point increase in a hitter's walk rate increases their predicted overturn rate by <strong>4.65 percentage points</strong>, confirming that plate discipline translates into slightly more accurate challenge decisions.
             </li>
             <li>
-              <strong>OPS (<code>ops</code>, \(\beta = -0.1340\)) &amp; Plate Appearances (<code>plateAppearances</code>, \(\beta = +0.000085\)):</strong> Overall OPS exhibits a slight negative slope once walk rate is controlled, while total plate appearances has virtually zero effect. Overall, season-level batting statistics explain less than 5% of the variance in challenge rates and under 2% of the variance in overturn success.
+              <strong>OPS (<code>ops</code>, \(\beta = -0.1340\)) &amp; Plate Appearances (<code>plateAppearances</code>, \(\beta = +0.000085\)):</strong> Overall OPS exhibits a slight negative slope once walk rate is controlled, while total plate appearances has virtually zero effect. 
             </li>
           </ul>
+
+          <p>
+            Overall, season-level batting statistics explain less than 5% of the variance in challenge rates and under 2% of the variance in overturn rates.
+          </p>
 
 
         </div>
