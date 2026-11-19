@@ -194,7 +194,10 @@
             To eliminate small-sample volatility in continuous target rates, hitters with fewer than 100 plate appearances and rows with missing target values were filtered out. This yielded a clean dataset of 425 qualified hitters (340 training rows and 85 testing rows) across five continuous candidate predictors: <code>plateAppearances</code>, <code>ops</code>, <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>.
           </p>
 
-          <p>Todo: Add screenshot of final dataset as Figure 3</p>
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/FinalData-LinearReg.png" alt="Prepared Season-Level Hitter Dataset for Linear Regression" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 3: Sample of the merged and filtered season-level hitter dataset containing the five continuous batting predictors alongside the continuous <code>Total_ChallengeRate</code> and <code>Total_OverturnedRate</code> targets.</figcaption>
+          </figure>
 
           <h3>2. Logistic Regression Data Preparation (Pitch-by-Pitch Classification)</h3>
 
