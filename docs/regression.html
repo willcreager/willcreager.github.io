@@ -116,7 +116,48 @@
             <img src="images/figures/regression/RegressionOverview_Diagram1.png" alt="Simple Linear Regression Best-Fit Line and Residual Errors" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Illustration of Simple Linear Regression fitting a continuous line through observed data points by minimizing the squared vertical residual errors (\(e_i = y_i - \hat{y}_i\)).</figcaption>
           </figure>
-          
+
+          <h3>Logistic Regression</h3>
+
+          <p>
+            Logistic Regression is a supervised classification algorithm used when the target variable is binary (such as <code>Challenged</code> vs. <code>Not Challenged</code> or <code>Overturned</code> vs. <code>Confirmed</code>). Rather than predicting an unbounded continuous number, Logistic Regression first computes a linear log-odds score \(z\) and passes it through the non-linear Sigmoid function. This curve squashes any real-valued input into a bounded probability between \(0\) and \(1\), as shown in Figure 2:
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Logistic Sigmoid Function</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$P(Y = 1 \mid X) = \sigma(z) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}}$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                By default, observations with a predicted probability \(P(Y = 1 \mid X) \geq 0.5\) (corresponding to \(z \geq 0\)) are assigned to the positive class, while values below \(0.5\) are assigned to the negative class.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Instead of minimizing squared residuals, Logistic Regression optimizes its weights using Maximum Likelihood Estimation (MLE). Furthermore, exponentiating any learned feature coefficient (\(e^{\beta_j}\)) yields an interpretable Odds Ratio, indicating how the odds of the positive outcome multiply for each unit increase in that feature.
+          </p>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/RegressionOverview_Diagram2.png" alt="Logistic Regression Sigmoid Curve" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: The Logistic Sigmoid curve mapping continuous linear log-odds scores (\(z\)) into bounded class probabilities between \(0\) and \(1\) around the \(P = 0.5\) decision threshold.</figcaption>
+          </figure>
+
+          <h3>Application to the ABS Challenge Research Project</h3>
+
+          <p>
+            Within this study, regression modeling is applied across both season-level player aggregates and pitch-by-pitch tracking telemetry:
+          </p>
+          <ul>
+            <li>
+              <strong>Linear Regression (Season-Level Hitter Rates):</strong> Evaluates all combinations of five season-level batting metrics (<code>plateAppearances</code>, <code>ops</code>, <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code>) using 5-fold cross-validation to determine whether general offensive production, increased playing time, and plate discipline predict a batter's cumulative ABS Challenge Rate or ABS Overturn Rate.
+            </li>
+            <li>
+              <strong>Logistic Regression (Pitch-by-Pitch Classification):</strong> Evaluates the exact same four binary classification tasks established in earlier models—Batter Challenge Intent, Batter Challenge Outcome, Defense Challenge Intent, and Defense Challenge Outcome—enabling a direct comparison against the feature-independent Hybrid Naive Bayes models.
+            </li>
+          </ul>
+       
         </div>
 
       </div>
