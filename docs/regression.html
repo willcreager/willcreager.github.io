@@ -274,6 +274,63 @@
       </div>
     </section>
 
+    <!-- Results -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Results</h2>
+
+        <h3>1. Linear Regression Results (Season-Level Batter Rates)</h3>
+
+        <div class="content-block">
+          <p>
+            All 31 possible subsets of the five candidate batting metrics were evaluated using <strong>5-fold cross-validation</strong> strictly within the 340-player training split before evaluating the single top-ranked subset once on the untouched 85-player holdout test set.
+          </p>
+
+          <h4>A. Predicting Batter ABS Challenge Rate</h4>
+
+          <p>
+            Cross-validation selected the three-feature plate-discipline combination of <code>strikeOutRate</code>, <code>walkRate</code>, and <code>pitchesPerPA</code> as the optimal subset. On the untouched holdout test set, the model achieved an \(R^2\) of 0.0456, a Root Mean Squared Error (RMSE) of 0.0261, and a Mean Absolute Error (MAE) of 0.0195 (intercept = <code>0.1393</code>).
+          </p>
+          <ul>
+            <li>
+              <strong>Walk Rate (<code>walkRate</code>, \(\beta = +0.2209\)):</strong> Holding strikeout rate and pitches per plate appearance constant, every 10 percentage-point increase in a batter's walk rate (e.g., from 0.08 to 0.18) increases their predicted ABS challenge rate by 2.21 percentage points. Disciplined hitters with sharper strike-zone recognition appeal calls noticeably more frequently than free-swingers.
+            </li>
+            <li>
+              <strong>Strikeout Rate (<code>strikeOutRate</code>, \(\beta = +0.0651\)):</strong> Holding other features constant, higher strikeout rates modestly increase challenge frequency, reflecting more frequent two-strike called third-strike situations.
+            </li>
+            <li>
+              <strong>Pitches Per Plate Appearance (<code>pitchesPerPA</code>, \(\beta = -0.0322\)):</strong> Once walk and strikeout rates are accounted for, seeing more pitches per plate appearance slightly reduces challenge rate.
+            </li>
+          </ul>
+
+          <h4>B. Predicting Batter ABS Overturn Rate</h4>
+
+          <p>
+            For overturn success rate, 5-fold cross-validation selected <code>plateAppearances</code>, <code>ops</code>, and <code>walkRate</code> as the top feature subset. On the untouched holdout test set, the model recorded an <strong>\(R^2\) of 0.0143</strong>, an <strong>RMSE of 0.1789</strong>, and an <strong>MAE of 0.1331</strong> (intercept = <code>0.4978</code>)
+          </p>
+          <ul>
+            <li>
+              <strong>Walk Rate (<code>walkRate</code>, \(\beta = +0.4654\)):</strong> Every 10 percentage-point increase in a hitter's walk rate increases their predicted overturn rate by <strong>4.65 percentage points</strong>, confirming that plate discipline translates into slightly more accurate challenge decisions.
+            </li>
+            <li>
+              <strong>OPS (<code>ops</code>, \(\beta = -0.1340\)) &amp; Plate Appearances (<code>plateAppearances</code>, \(\beta = +0.000085\)):</strong> Overall OPS exhibits a slight negative slope once walk rate is controlled, while total plate appearances has virtually zero effect. Overall, season-level batting statistics explain less than 5% of the variance in challenge rates and under 2% of the variance in overturn success.
+            </li>
+          </ul>
+
+
+        </div>
+
+        <h3>2. Logistic Regression Results (Pitch-by-Pitch Classification)</h3>
+
+        <div class="content-block">
+          <p>
+            
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
 
   </main>
 
