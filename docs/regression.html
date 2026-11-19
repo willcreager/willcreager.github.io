@@ -10,6 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -64,6 +73,37 @@
 
   <!-- Main Content -->
   <main>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <h2>Regression Overview</h2>
+
+        <div class="content-block">
+          <p>
+            Regression is a foundational family of supervised machine learning algorithms designed to model the mathematical relationship between independent input features (\(X\)) and a target outcome variable (\(Y\)). Depending on whether the target variable is a continuous numerical measurement or a discrete categorical label, predictive modeling pipelines utilize either Linear Regression or Logistic Regression. Within ABS analytics, pairing both techniques enables a two-tiered investigation: evaluating whether season-long hitting metrics explain continuous player challenge rates, while simultaneously predicting discrete pitch-by-pitch review decisions and officiating overturns.
+          </p>
+
+          <h3>Linear Regression</h3>
+
+          <p>
+            Linear Regression predicts a continuous numerical target variable by fitting a straight hyperplane through the feature space. For a dataset with multiple independent features, the predicted continuous value \(\hat{y}\) is expressed as a linear weighted sum:
+          </p>
+          <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.25rem;">
+            $$\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n$$
+          </div>
+          <p class="card-text small text-muted">
+            Where \(\beta_0\) is the y-intercept, \(x_1, \dots, x_n\) represent input features, and \(\beta_1, \dots, \beta_n\) denote the coefficients quantifying how much \(\hat{y}\) changes per one-unit increase in each feature (holding all other features constant).
+          </p>
+
+          <p>
+            To determine the optimal line of best fit, Ordinary Least Squares (OLS) minimizes the vertical distances—known as residuals (\(e_i = y_i - \hat{y}_i\))—between the actual observed data points and the predicted regression line. Specifically, the algorithm minimizes the Residual Sum of Squares (RSS) across all training observations, as illustrated in Figure 1:
+          </p>
+          
+        </div>
+
+      </div>
+    </section>
 
 
   </main>
