@@ -196,6 +196,27 @@
 
           <p>Todo: Add screenshot of final dataset as Figure 3</p>
 
+          <h3>2. Logistic Regression Data Preparation (Pitch-by-Pitch Classification)</h3>
+
+          <p>
+            For binary classification, the pitch-by-pitch batter and defensive datasets were prepared using the same supervised target labels established in prior modules: <code>Challenged</code> (1) vs. <code>Not Challenged</code> (0) for challenge intent tasks, and <code>Overturned</code> (1) vs. <code>Confirmed</code> (0) for challenge outcome tasks.
+          </p>
+          <ul>
+            <li>
+              <strong>Data Leakage Prevention on Outcome Models:</strong> While all 14 engineered spatial and situational features were retained for predicting challenge intent, the three strike-zone coordinate margins (<code>plateTimeX</code>, <code>plateTimeY_topDiff</code>, and <code>plateTimeY_BotDiff</code>) were strictly excluded from the outcome models. Because Hawk-Eye arbitration relies directly on those coordinates, removing them ensures the models evaluate whether situational context alone predicts overturn likelihood.
+            </li>
+            <li>
+              <strong>Feature Standardization (<code>StandardScaler</code>):</strong> For Logistic Regression, features measured on vastly different numerical scales (such as pitch velocity in miles per hour versus binary baserunner flags) receive uneven regularization penalties. Therefore, all numeric features were standardized to zero mean and unit variance inside a Scikit-Learn <code>Pipeline</code> so scaling parameters were learned strictly within each cross-validation training fold.
+            </li>
+            <li>
+              <strong>Class Imbalance Correction:</strong> To prevent the heavily skewed challenge intent models (~95.6% unchallenged for batters and ~97.6% unchallenged for defense) from collapsing into majority-class predictions, <code>class_weight="balanced"</code> was applied during training, while the naturally balanced outcome models used unweighted empirical distributions.
+            </li>
+          </ul>
+
+          <p>Todo: Add screenshot of dataset before standardization as Figure 4</p>
+
+          <p>Todo: Add links to download CSV files from GitHub</p>
+
         </div>
         
       </div>
