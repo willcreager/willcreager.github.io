@@ -181,6 +181,37 @@
       </div>
     </section>
 
+    <!-- Data Prep -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Data Prep</h2>
+
+        <div class="content-block">
+          <p>
+            Because Scikit-Learn's <code>DecisionTreeClassifier</code> stumps require purely numerical inputs and cannot split directly on raw text strings, nominal pitch classifications were transformed via <strong>One-Hot Encoding</strong>. Raw pitch identifiers (<code>pitchTypeId</code>) were first mapped into three descriptive pitch categories (<code>Fastball</code>, <code>Breaking</code>, and <code>Offspeed</code>) inside a categorical column (<code>pitchTypeCategory</code>), and then expanded using <code>pd.get_dummies()</code> into three binary indicator columns:
+          </p>
+
+          <ul>
+            <li>
+              <strong><code>pitchType_Fastball</code>:</strong> Binary indicator (<code>1</code> or <code>0</code>) identifying four-seam, sinker, cutter, and fastball deliveries.
+            </li>
+            <li>
+              <strong><code>pitchType_Breaking</code>:</strong> Binary indicator (<code>1</code> or <code>0</code>) identifying slider, curveball, knuckle-curve, and sweeper deliveries.
+            </li>
+            <li>
+              <strong><code>pitchType_Offspeed</code>:</strong> Binary indicator (<code>1</code> or <code>0</code>) identifying changeups, splitters, and remaining offspeed deliveries.
+            </li>
+          </ul>
+          
+          <p>
+            Unlike integer-encoding categories as <code>1, 2, 3</code>—which imposes an artificial numerical ordering between pitch types—one-hot encoding allows individual decision stumps to isolate any single pitch family cleanly with a simple threshold split.
+          </p>
+
+        </div>
+        
+      </div>
+    </section>
+
 
   </main>
 
