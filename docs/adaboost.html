@@ -90,6 +90,11 @@
           <p>
             At the start of training (\(t = 1\)), every observation in the training dataset of size \(N\) is assigned an equal sample weight \(w_i^{(1)} = \frac{1}{N}\). After each weak stump \(h_t(x)\) is fitted, AdaBoost evaluates its weighted classification error \(\varepsilon_t\) across all training points. Observations that were misclassified receive increased sample weights in round \(t + 1\), while correctly classified observations have their weights reduced, as contrasted against parallel bagging in Figure 1.
           </p>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/adaboost/AdaBoostOverview_Diagram1.png" alt="Parallel Bagging vs Sequential Boosting AdaBoost Mechanics" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Structural comparison between parallel Bagging (independent trees trained on random bootstrap samples) and sequential AdaBoost (iteratively increasing sample weights on misclassified borderline pitches).</figcaption>
+          </figure>
        
         </div>
 
