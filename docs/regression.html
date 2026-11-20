@@ -348,13 +348,29 @@
               <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.01\) (\(\text{CV Macro F1} = 0.5184\)), yielding 74.15% holdout test accuracy with 0.69 recall on <code>Challenged</code> (653 / 953) and 0.74 recall on <code>Not Challenged</code> (15,150 / 20,358).
             </li>
             <li>
-              <strong>Odds Ratio Interpretation:</strong> Because Scikit-Learn orders classes alphabetically (<code>0 = Challenged</code>, <code>1 = Not Challenged</code>), <code>prePitchStrikes</code> has a log-odds coefficient of \(-0.6965\) (\(\text{Odds Ratio} = e^{-0.6965} = \mathbf{0.498}\)). A one-standard-deviation increase in strikes cuts the odds of <em>Not Challenging</em> in half—meaning the odds of a batter initiating a challenge roughly double (\(1 / 0.498 = 2.01\times\)) as the strike count climbs. Similarly, higher <code>inning</code> (\(\text{OR} = 0.692\)) and lower bottom-edge zone margin <code>plateTimeY_BotDiff</code> (\(\text{OR} = 1.337\) for not challenging) strongly drive appeal decisions.
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>Not Challenged</code> vs. <code>Challenged</code>, <code>prePitchStrikes</code> has a log-odds coefficient of \(-0.6965\) (\(\text{Odds Ratio} = e^{-0.6965} = \mathbf{0.498}\)). A one-standard-deviation increase in strikes cuts the odds of <em>Not Challenging</em> in half—meaning the odds of a batter initiating a challenge roughly double as the strike count climbs. Similarly, higher <code>inning</code> (\(\text{OR} = 0.692\)) and lower bottom-edge zone margin <code>plateTimeY_BotDiff</code> (\(\text{OR} = 1.337\) for not challenging) strongly drive appeal decisions.
             </li>
           </ul>
 
           <figure style="margin: var(--spacing-lg) auto; text-align: left;">
             <img src="images/figures/regression/BatterIntentConfusionMatrix.png" alt="Logistic Regression Confusion Matrix for Batter Challenge Intent" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 8: Holdout test confusion matrix for balanced Logistic Regression on Batter Challenge Intent (Accuracy = 74.15%).</figcaption>
+          </figure>
+
+          <h4>Task 2: Batter Challenge Outcome (Unweighted, 11 Non-Spatial Features)</h4>
+
+          <ul>
+            <li>
+              <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.001\) (\(\text{CV Accuracy} = 0.5928\)), achieving 59.60% holdout test accuracy with 0.71 recall on <code>Confirmed</code> (346 / 488) and 0.48 recall on <code>Overturned</code> (222 / 465).
+            </li>
+            <li>
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>1 = Overturned</code> vs. <code>0 = Confirmed</code>, <code>prePitchStrikes</code> carries a coefficient of \(-0.1320\) (\(\text{Odds Ratio} = \mathbf{0.876}\)). Each +1 standard deviation increase in strikes multiplies the odds of an overturn by 0.876 (a 12.4% decrease in overturn odds), showing that defensive two-strike "protect-the-plate" appeals are less likely to succeed. Conversely, <code>runnerOn1st</code> (\(\beta = +0.1025\), \(\text{OR} = \mathbf{1.108}\)) increases overturn odds by 10.8% per standard deviation.
+            </li>
+          </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/BatterOutcomeConfusionMatrix.png" alt="Logistic Regression Confusion Matrix for Batter Challenge Outcome" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 9: Holdout test confusion matrix for Logistic Regression on Batter Challenge Outcome using 11 non-spatial features (Accuracy = 59.60%).</figcaption>
           </figure>
 
         </div>
