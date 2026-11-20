@@ -373,6 +373,43 @@
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 9: Holdout test confusion matrix for Logistic Regression on Batter Challenge Outcome using 11 non-spatial features (Accuracy = 59.60%).</figcaption>
           </figure>
 
+          <h4>Task 3: Defense Challenge Intent (Balanced, 14 Features)</h4>
+
+          <ul>
+            <li>
+              <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.01\) (\(\text{CV Macro F1} = 0.4112\)), achieving 61.02% holdout test accuracy with 0.58 recall on <code>Challenged</code> (671 / 1,158) and 0.61 recall on <code>Not Challenged</code> (28,398 / 46,481).
+            </li>
+            <li>
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>Not Challenged</code> vs. <code>Challenged</code>, <code>prePitchBalls</code> (\(\beta = -0.2863\), \(\text{OR} = \mathbf{0.751}\)) and <code>inning</code> (\(\beta = -0.2573\), \(\text{OR} = \mathbf{0.773}\)) are the strongest situational drivers, indicating that pitchers and catchers are significantly more likely to appeal called balls during high-ball counts and late innings.
+            </li>
+          </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/DefenseIntentConfusionMatrix.png" alt="Logistic Regression Confusion Matrix for Defense Challenge Intent" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 10: Holdout test confusion matrix for balanced Logistic Regression on Defense Challenge Intent (Accuracy = 61.02%).</figcaption>
+          </figure>
+
+          <h4>Task 4: Defense Challenge Outcome (Unweighted, 11 Non-Spatial Features)</h4>
+
+          <ul>
+            <li>
+              <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 10.0\) (\(\text{CV Accuracy} = 0.6285\)), reaching 62.04% holdout test accuracy with 0.82 recall on <code>Overturned</code> (549 / 672) and 0.35 recall on <code>Confirmed</code> (170 / 487).
+            </li>
+            <li>
+              <strong>Odds Ratio Interpretation:</strong> Modeling Overturned vs. Confirmed, inning (\(\beta = -0.3847\), \(\text{OR} = \mathbf{0.681}\)) and prePitchBalls (\(\beta = -0.2568\), \(\text{OR} = \mathbf{0.774}\)) carry negative slopes, meaning desperate late-inning or three-ball defensive challenges face a 31.9% and 22.6% reduction in overturn odds per standard deviation, respectively.
+            </li>
+          </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/regression/BatterOutcomeConfusionMatrix.png" alt="Logistic Regression Confusion Matrix for Defense Challenge Outcome" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 11: Holdout test confusion matrix for Logistic Regression on Defense Challenge Outcome using 11 non-spatial features (Accuracy = 62.04%).</figcaption>
+          </figure>
+
+        </div>
+
+        <h3>3. Model Comparison: Logistic Regression vs. Hybrid Naive Bayes</h3>
+
+        <div class="content-block">
         </div>
         
       </div>
