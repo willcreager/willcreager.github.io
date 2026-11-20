@@ -454,6 +454,23 @@
       </div>
     </section>
 
+    <!-- Conclusions -->
+    <section class="section">
+      <div class="container">
+        <h2>Conclusions</h2>
+
+        <div class="content-block">
+          <p>
+            Evaluating both Linear and Logistic Regression across the ABS Challenge System dataset establishes a clear boundary between macro-level player tendencies and pitch-by-pitch tactical behavior. In the Linear Regression experiments, season-long batting metrics produced low \(R^{2}\) values (0.0456 for challenge rate and 0.0143 for overturn rate), confirming that a hitter's cumulative offensive profile cannot reliably predict how frequently or successfully they appeal calls. Even so, the consistent selection of walkRate with positive slope coefficients across both targets demonstrates that superior plate discipline yields a measurable, albeit modest, increase in both review volume and overturn accuracy.
+          </p>
+          
+          <p>
+            Transitioning to pitch-by-pitch Logistic Regression significantly improves classification performance on imbalanced player intent tasks compared to the earlier Hybrid Naïve Bayes baseline. By optimizing joint feature weights through Maximum Likelihood Estimation rather than relying on Naïve Bayes' strict conditional independence assumption, Logistic Regression boosted holdout test accuracy by +20.83 percentage points on Batter Challenge Intent (74.15% vs. 53.32%) and by +8.63 percentage points on Defense Challenge Intent (61.02% vs. 52.39%), dramatically curbing false-positive alerts while maintaining strong minority-class recall. Conversely, on the non-spatial challenge outcome tasks, Logistic Regression converged to the exact same ~60–62% accuracy plateau observed in both Naïve Bayes and single Decision Trees. This cross-model convergence confirms that while game-state context (such as two-strike counts, three-ball counts, and late innings) meaningfully shifts the odds of an overturn, predicting exact officiating reversals requires non-linear spatial boundary modeling.
+          </p>          
+        </div>
+      </div>
+    </section>
+
 
   </main>
 
