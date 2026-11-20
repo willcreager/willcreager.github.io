@@ -187,6 +187,8 @@
         <h2>Data Prep</h2>
 
         <div class="content-block">
+          <h3>1. Categorical Feature One-Hot Encoding</h3>
+          
           <p>
             Because Scikit-Learn's <code>DecisionTreeClassifier</code> stumps require purely numerical inputs and cannot split directly on raw text strings, nominal pitch classifications were transformed via <strong>One-Hot Encoding</strong>. Raw pitch identifiers (<code>pitchTypeId</code>) were first mapped into three descriptive pitch categories (<code>Fastball</code>, <code>Breaking</code>, and <code>Offspeed</code>) inside a categorical column (<code>pitchTypeCategory</code>), and then expanded using <code>pd.get_dummies()</code> into three binary indicator columns:
           </p>
@@ -207,6 +209,39 @@
             Unlike integer-encoding categories as <code>1, 2, 3</code>—which imposes an artificial numerical ordering between pitch types—one-hot encoding allows individual decision stumps to isolate any single pitch family cleanly with a simple threshold split.
           </p>
 
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/adaboost/Sample_Encoding.png" alt="One-Hot Encoding Verification of Pitch Categories" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 3: Sample verification of the One-Hot Encoding transformation converting nominal <code>pitchTypeCategory</code> text labels into binary numeric columns (<code>pitchType_Fastball</code>, <code>pitchType_Breaking</code>, and <code>pitchType_Offspeed</code>).</figcaption>
+          </figure>
+
+          <h3>2. Feature Matrix Segmentation &amp; Class Imbalance Weighting</h3>
+
+          <ul>
+            <li>
+              <strong>Intent vs. Outcome Feature Separation:</strong> For <strong>Batter Challenge Intent</strong> (85,240 training / 21,311 test rows) and <strong>Defense Challenge Intent</strong> (190,555 training / 47,639 test rows), all <strong>16</strong> spatial and situational features—including horizontal and vertical strike-zone border margins (<code>plateTimeX</code>, <code>plateTimeY_topDiff</code>, and <code>plateTimeY_BotDiff</code>)—were included. For <strong>Batter Challenge Outcome</strong> (3,811 training / 953 test rows) and <strong>Defense Challenge Outcome</strong> (4,632 training / 1,159 test rows), those three spatial coordinates were removed, leaving <strong>13</strong> non-spatial situational and velocity features so models could not exploit rulebook zone geometry directly.
+            </li>
+            <li>
+              <strong>Balanced Sample Weighting (<code>compute_sample_weight</code>):</strong> Unlike standalone Decision Trees, Scikit-Learn's <code>AdaBoostClassifier</code> does not accept a direct <code>class_weight</code> initialization argument. To prevent the skewed challenge intent ensembles (~95.6% unchallenged for batters and ~97.6% unchallenged for defense) from collapsing into majority-class predictions, balanced sample weights were computed strictly inside each training fold via <code>compute_sample_weight("balanced", y_train)</code> and passed to <code>fit(..., sample_weight=sw)</code>. The naturally balanced outcome tasks were trained with uniform sample weights.
+            </li>
+          </ul>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/FinalData-Batters.png" alt="Final batter data used for AdaBoost" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 4: Snippet of the first five rows and 10 columns of the final, cleaned batter-challengeable pitch data used in the AdaBoost models.</figcaption>
+          </figure>
+  
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/naivebayes/FinalData-Defense.png" alt="Final defense data used for Logistic Regression" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 5: Snippet of the first five rows and 10 columns of the final, cleaned defense-challengeable pitch data used in the AdaBoost models.</figcaption>
+          </figure>
+
+          <div class="dataset-links" style="margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #0056b3;">
+            <p><strong>Dataset Links:</strong></p>
+            <ul>
+              <li>Batter-challengeable Pitches CSV: <a href="data/csvs/MLBData-ABSChallengeablePitches-Batters-FullSeason.csv" target="_blank">MLBData-ABSChallengeablePitches-Batters-FullSeason.csv</a></li>
+              <li>Defense-challengeable Pitches CSV: <a href="data/csvs/MLBData-ABSChallengeablePitches-Defense-FullSeason.csv" target="_blank">MLBData-ABSChallengeablePitches-Defense-FullSeason.csv</a></li>
+            </ul>
+          </div>
         </div>
         
       </div>
