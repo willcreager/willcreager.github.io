@@ -377,50 +377,67 @@
 
         </div>
 
-        <h3>Model Comparison: Logistic Regression vs. Hybrid Naive Bayes</h3>
+        <h3>Model Comparison: AdaBoost vs. Decision Trees</h3>
 
         <div class="content-block">
           <p>
-            Comparing Logistic Regression directly against the Hybrid Naïve Bayes classifiers across identical holdout splits highlights the advantage of modeling correlated feature weights jointly rather than assuming conditional independence:
+            Comparing AdaBoost directly against the best-performing single Decision Trees trained previously demonstrates how sequential boosting improves classification stability and overall accuracy on complex spatial boundaries:
           </p>
 
           <table border="1" class="table table-striped table-hover" style="width: 100%; border-collapse: collapse; text-align: left; padding: 8px;">
               <thead style="background-color: #0056b3; color: white;">
                 <tr>
                   <th>Predictive Task</th>
-                  <th>Logistic Regression Holdout Accuracy</th>
-                  <th>Hybrid Naive Bayes Holdout Accuracy</th>
-                  <th>Key Performance Difference</th>
+                  <th>AdaBoost Holdout Accuracy</th>
+                  <th>Best Decision Tree Accuracy</th>
+                  <th>Key Ensemble Comparison</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="text-left font-weight-bold">1. Batter Challenge Intent (Balanced)</td>
-                  <td><strong>74.15%</strong> (Recall: 0.69 / 0.74)</td>
-                  <td>53.32% (Recall: 0.90 / 0.52)</td>
-                  <td class="text-left"><strong>+20.83%</strong> accuracy gain; cuts false positives nearly in half (5,208 vs. 9,853).</td>
+                  <td><strong>83.83%</strong> (Recall: 0.76 / 0.84)</td>
+                  <td>79.70% (Regularized Gini Tree)</td>
+                  <td class="text-left"><strong>+4.13%</strong> accuracy improvement over the strongest single tree while boosting challenged recall (0.76 vs. 0.71).</td>
                 </tr>
                 <tr style="background-color: #f2f2f2;">
                   <td class="text-left font-weight-bold">2. Batter Challenge Outcome</td>
-                  <td>59.60% (Recall: 0.48 / 0.71)</td>
-                  <td><strong>61.59%</strong> (Recall: 0.55 / 0.68)</td>
-                  <td class="text-left">Nearly identical (~60–62% ceiling) on non-spatial situational metadata.</td>
+                  <td>59.92% (Recall: 0.43 / 0.76)</td>
+                  <td><strong>61.50%</strong> (Shallow Gini Tree)</td>
+                  <td class="text-left">Converges to the same ~60–61.5% ceiling on non-spatial situational metadata.</td>
                 </tr>
                 <tr>
                   <td class="text-left font-weight-bold">3. Defense Challenge Intent (Balanced)</td>
-                  <td><strong>61.02%</strong> (Recall: 0.58 / 0.61)</td>
-                  <td>52.39% (Recall: 0.99 / 0.51)</td>
-                  <td class="text-left"><strong>+8.63%</strong> accuracy gain; substantially reduces false alarms (18,083 vs. 22,673).</td>
+                  <td><strong>86.22%</strong> (Recall: 0.95 / 0.86)</td>
+                  <td>85.20% (Regularized Gini Tree)</td>
+                  <td class="text-left"><strong>+1.02%</strong> accuracy improvement with an elite <strong>95%</strong> minority-class recall.</td>
                 </tr>
                 <tr style="background-color: #f2f2f2;">
                   <td class="text-left font-weight-bold">4. Defense Challenge Outcome</td>
-                  <td><strong>62.04%</strong> (Recall: 0.82 / 0.35)</td>
-                  <td>60.57% (Recall: 0.78 / 0.36)</td>
-                  <td class="text-left"><strong>+1.47%</strong> accuracy gain with higher overturn recall (0.82 vs. 0.78).</td>
+                  <td>61.26% (Recall: 0.83 / 0.31)</td>
+                  <td><strong>61.60%</strong> (Deep Entropy Tree)</td>
+                  <td class="text-left">Nearly identical performance (~61.3% vs. 61.6% ceiling) on non-spatial situational metadata.</td>
                 </tr>
               </tbody>
           </table>
         </div>      
+      </div>
+    </section>
+
+    <!-- Conclusions -->
+    <section class="section">
+      <div class="container">
+        <h2>Conclusions</h2>
+
+        <div class="content-block">
+          <p>
+            Evaluating AdaBoost across all four ABS classification tasks confirms that sequential ensemble boosting provides a substantial performance advantage when modeling non-linear spatial decision boundaries. On the imbalanced player challenge intent tasks, iteratively reweighting misclassified borderline pitches across 100 to 150 decision stumps pushed holdout test accuracy to 83.83% for batters and 86.22% for defense—outperforming every earlier model family, including Hybrid Naïve Bayes (53.32% and 52.39%), Logistic Regression (74.15% and 61.02%), and the strongest single Decision Trees (79.70% and 85.20%). Feature importance scores confirm that horizontal and vertical strike-zone margins (<code>plateTimeX</code>, <code>plateTimeY_BotDiff</code>, and <code>plateTimeY_topDiff</code>) account for roughly 84% to 95% of the ensemble's predictive weight, proving that sequential stumps excel at carving out precise geometric gray-zone thresholds around the rulebook strike zone.
+          </p>
+          
+          <p>
+            Conversely, on the non-spatial challenge outcome tasks, AdaBoost converged to 59.92% accuracy for batters and 61.26% accuracy for defense, closely matching the ~60–61.6% accuracy ceiling observed across Naive Bayes (61.6% and 60.6%), Decision Trees (61.5% and 61.6%), and Logistic Regression (59.60% and 62.04%). Validation curves further revealed that adding excessive boosting rounds on situational metadata alone yields no generalization gain and can slightly degrade validation accuracy after 25 to 100 rounds. Together, these findings establish a definitive conclusion across all supervised modules: player challenge decisions are highly predictable, rule-governed responses to spatial zone boundaries that benefit strongly from sequential boosting, whereas predicting challenge overturns without exact ball-flight coordinates remains bounded by inherent game-state uncertainty.
+          </p>          
+        </div>
       </div>
     </section>
 
