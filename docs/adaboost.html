@@ -10,6 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -65,6 +74,27 @@
 
   <!-- Main Content -->
   <main>
+
+    <!-- Overview -->
+    <section class="section">
+      <div class="container">
+        <h2>Regression Overview</h2>
+
+        <div class="content-block">
+          <p>
+            Adaptive Boosting (AdaBoost) is a sequential ensemble machine learning algorithm that combines many simple, "weak" learners—typically single-split Decision Stumps (decision trees with <code>max_depth=1</code>)—into a single high-accuracy "strong" classifier. Unlike standalone deep decision trees that can overfit noisy training rows, or parallel bagging methods like Random Forests that train independent trees on random bootstrap samples, AdaBoost trains learners sequentially so that each new stump focuses specifically on the mistakes made by its predecessors.
+          </p>
+
+          <h3>1. Sequential Error Reweighting vs. Parallel Bagging</h3>
+
+          <p>
+            At the start of training (\(t = 1\)), every observation in the training dataset of size \(N\) is assigned an equal sample weight \(w_i^{(1)} = \frac{1}{N}\). After each weak stump \(h_t(x)\) is fitted, AdaBoost evaluates its weighted classification error \(\varepsilon_t\) across all training points. Observations that were misclassified receive increased sample weights in round \(t + 1\), while correctly classified observations have their weights reduced, as contrasted against parallel bagging in Figure 1.
+          </p>
+       
+        </div>
+
+      </div>
+    </section>
 
 
   </main>
