@@ -95,6 +95,86 @@
             <img src="images/figures/adaboost/AdaBoostOverview_Diagram1.png" alt="Parallel Bagging vs Sequential Boosting AdaBoost Mechanics" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
             <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 1: Structural comparison between parallel Bagging (independent trees trained on random bootstrap samples) and sequential AdaBoost (iteratively increasing sample weights on misclassified borderline pitches).</figcaption>
           </figure>
+
+          <h3>2. Mathematical Formulation of AdaBoost</h3>
+
+          <p>
+            In each boosting round \(t = 1, \dots, T\), the algorithm computes the stump's weighted error rate \(\varepsilon_t\) and assigns it an estimator voting weight \(\alpha_t\) scaled by the <strong>learning rate</strong> \(\eta \in (0, 1]\):
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Stump Voting Weight (\(\alpha_t\)) Formula</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$\alpha_t = \eta \cdot \frac{1}{2} \ln\left(\frac{1 - \varepsilon_t}{\varepsilon_t}\right)$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                Where \(\varepsilon_t\) is the weighted error rate of stump \(h_t\) and \(\eta\) is the learning rate shrinkage factor. Stumps with lower error receive larger \(\alpha_t\) voting weights, while a stump performing at random guessing (\(\varepsilon_t = 0.5\)) receives zero weight (\(\alpha_t = 0\)).
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Once \(\alpha_t\) is determined, AdaBoost updates the sample weight \(w_i\) for every training observation \(i\) and normalizes the weights so they sum to \(1\) before fitting the next stump:
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Sample Weight Update Rule</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$w_i^{(t+1)} = \frac{w_i^{(t)} \exp\left(-\alpha_t y_i h_t(x_i)\right)}{Z_t}$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                Where \(y_i \in \{-1, +1\}\) is the true class label, \(h_t(x_i) \in \{-1, +1\}\) is the stump's prediction, and \(Z_t\) is a normalization constant. Misclassified points (\(y_i h_t(x_i) = -1\)) are multiplied by \(e^{+\alpha_t} &gt; 1\), forcing the next stump to prioritize them.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            After \(T\) boosting rounds (controlled by <code>n_estimators</code>), all weak stumps combine via a weighted majority vote to form the final strong classifier \(H(x)\), as illustrated in Figure 2:
+          </p>
+
+          <div class="card my-3 shadow-sm">
+            <div class="card-body bg-light">
+              <h5 class="card-title font-weight-bold text-dark">Final AdaBoost Ensemble Prediction</h5>
+              <div class="text-center py-2 text-primary font-weight-bold" style="font-size: 1.2rem;">
+                $$H(x) = \mathrm{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)$$
+              </div>
+              <p class="card-text small text-muted mb-0">
+                Tuning the trade-off between <code>n_estimators</code> (\(T\)) and <code>learning_rate</code> (\(\eta\)) prevents overfitting while allowing the ensemble to carve out sharp, non-linear decision boundaries.
+              </p>
+            </div>
+          </div>
+
+          <figure style="margin: var(--spacing-lg) auto; text-align: left;">
+            <img src="images/figures/adaboost/AdaBoostOverview_Diagram2.png" alt="Combining Weak Decision Stumps via Error-Weighted Voting" style="max-width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+            <figcaption style="margin-top: var(--spacing-sm); color: var(--cu-dark-gray); font-size: 0.9rem; font-style: italic;">Figure 2: Illustration of multiple single-split Decision Stumps combining through error-weighted \(\alpha_t\) votes into a single strong ABS classification boundary.</figcaption>
+          </figure>
+
+          <h3>3. Application to the ABS Challenge Research Project</h3>
+
+          <p>
+            Within this study, AdaBoost is evaluated across the exact same four pitch-level binary classification tasks examined in earlier models:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Batter Challenge Intent:</strong> Predicting whether a hitter appeals a called strike or passes up the challenge window using spatial zone deviations and game-state context.
+            </li>
+            <li>
+              <strong>Batter Challenge Outcome:</strong> Predicting whether an active hitter challenge results in an overturned call or a confirmed ruling based purely on non-spatial situational metadata.
+            </li>
+            <li>
+              <strong>Defense Challenge Intent:</strong> Predicting whether a pitcher or catcher appeals a called ball.
+            </li>
+            <li>
+              <strong>Defense Challenge Outcome:</strong> Predicting whether a defensive appeal successfully overturns a called ball into a strike or stands as confirmed.
+            </li>
+          </ul>
+          
+          <p>
+            Evaluating AdaBoost on identical holdout splits enables a direct comparison against the single Decision Trees to determine whether sequential boosting improves minority-class recall and overall classification accuracy.
+          </p>
        
         </div>
 
