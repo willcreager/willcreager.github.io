@@ -312,7 +312,7 @@
           <h4>B. Predicting Batter ABS Overturn Rate</h4>
 
           <p>
-            For overturn success rate, 5-fold cross-validation selected <code>plateAppearances</code>, <code>ops</code>, and <code>walkRate</code> as the top feature subset. On the untouched holdout test set, the model recorded an <strong>\(R^2\) of 0.0143</strong>, an <strong>RMSE of 0.1789</strong>, and an <strong>MAE of 0.1331</strong> (intercept = <code>0.4978</code>)
+            For overturn success rate, 5-fold cross-validation selected <code>plateAppearances</code>, <code>ops</code>, and <code>walkRate</code> as the top feature subset. On the untouched holdout test set, the model recorded an \(R^2\) of 0.0143, an RMSE of 0.1789, and an MAE of 0.1331 (intercept = <code>0.4978</code>).
           </p>
           <ul>
             <li>
@@ -349,7 +349,7 @@
               <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.01\) (\(\text{CV Macro F1} = 0.5184\)), yielding 74.15% holdout test accuracy with 0.69 recall on <code>Challenged</code> (653 / 953) and 0.74 recall on <code>Not Challenged</code> (15,150 / 20,358).
             </li>
             <li>
-              <strong>Odds Ratio Interpretation:</strong> Modeling <code>Not Challenged</code> vs. <code>Challenged</code>, <code>prePitchStrikes</code> has a log-odds coefficient of \(-0.6965\) (\(\text{Odds Ratio} = e^{-0.6965} = \mathbf{0.498}\)). A one-standard-deviation increase in strikes cuts the odds of <em>Not Challenging</em> in half—meaning the odds of a batter initiating a challenge roughly double as the strike count climbs. Similarly, higher <code>inning</code> (\(\text{OR} = 0.692\)) and lower bottom-edge zone margin <code>plateTimeY_BotDiff</code> (\(\text{OR} = 1.337\) for not challenging) strongly drive appeal decisions.
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>1 = Not Challenged</code> vs. <code>0 = Challenged</code>, <code>prePitchStrikes</code> has a log-odds coefficient of \(-0.6965\) (\(\text{Odds Ratio} = e^{-0.6965} = \mathbf{0.498}\)). A one-standard-deviation increase in strikes cuts the odds of <em>Not Challenging</em> in half—meaning the odds of a batter initiating a challenge roughly double as the strike count climbs. Similarly, higher <code>inning</code> (\(\text{OR} = 0.692\)) and lower bottom-edge zone margin <code>plateTimeY_BotDiff</code> (\(\text{OR} = 1.337\) for not challenging) strongly drive appeal decisions.
             </li>
           </ul>
 
@@ -381,7 +381,7 @@
               <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 0.01\) (\(\text{CV Macro F1} = 0.4112\)), achieving 61.02% holdout test accuracy with 0.58 recall on <code>Challenged</code> (671 / 1,158) and 0.61 recall on <code>Not Challenged</code> (28,398 / 46,481).
             </li>
             <li>
-              <strong>Odds Ratio Interpretation:</strong> Modeling <code>Not Challenged</code> vs. <code>Challenged</code>, <code>prePitchBalls</code> (\(\beta = -0.2863\), \(\text{OR} = \mathbf{0.751}\)) and <code>inning</code> (\(\beta = -0.2573\), \(\text{OR} = \mathbf{0.773}\)) are the strongest situational drivers, indicating that pitchers and catchers are significantly more likely to appeal called balls during high-ball counts and late innings.
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>1 = Not Challenged</code> vs. <code>0 = Challenged</code>, <code>prePitchBalls</code> (\(\beta = -0.2863\), \(\text{OR} = \mathbf{0.751}\)) and <code>inning</code> (\(\beta = -0.2573\), \(\text{OR} = \mathbf{0.773}\)) are the strongest situational drivers, indicating that pitchers and catchers are significantly more likely to appeal called balls during high-ball counts and late innings.
             </li>
           </ul>
 
@@ -397,7 +397,7 @@
               <strong>Tuning &amp; Holdout Performance:</strong> Optimal \(C = 10.0\) (\(\text{CV Accuracy} = 0.6285\)), reaching 62.04% holdout test accuracy with 0.82 recall on <code>Overturned</code> (549 / 672) and 0.35 recall on <code>Confirmed</code> (170 / 487).
             </li>
             <li>
-              <strong>Odds Ratio Interpretation:</strong> Modeling Overturned vs. Confirmed, inning (\(\beta = -0.3847\), \(\text{OR} = \mathbf{0.681}\)) and prePitchBalls (\(\beta = -0.2568\), \(\text{OR} = \mathbf{0.774}\)) carry negative slopes, meaning desperate late-inning or three-ball defensive challenges face a 31.9% and 22.6% reduction in overturn odds per standard deviation, respectively.
+              <strong>Odds Ratio Interpretation:</strong> Modeling <code>1 = Overturned</code> vs. <code>0 = Confirmed</code>, inning (\(\beta = -0.3847\), \(\text{OR} = \mathbf{0.681}\)) and prePitchBalls (\(\beta = -0.2568\), \(\text{OR} = \mathbf{0.774}\)) carry negative slopes, meaning desperate late-inning or three-ball defensive challenges face a 31.9% and 22.6% reduction in overturn odds per standard deviation, respectively.
             </li>
           </ul>
 
